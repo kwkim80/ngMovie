@@ -1,0 +1,104 @@
+
+<div id="header">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand text-info text-uppercase" href="#">
+          <img src="https://drive.google.com/uc?id=1jfReTnKqzuaXS-SlPZyhC_wLPB6bkjIK" alt="logo" height="20" width="150">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse justify-content-end mx-auto" id="mainMenu">
+          <ul class="navbar-nav mx-auto ">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase" routerLink="/movies">Movie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase" routerLink="/actors">Actor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  text-uppercase" routerLink="/home">About</a>
+            </li>
+           
+            <li class="nav-item  text-uppercase dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ETC
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Something1</a>
+                <a class="dropdown-item" href="#">Something2</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something3</a>
+              </div>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+   
+</div>
+
+<div id="content">
+  <div class="container pt-5 pb-5">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div id="footer" class="bg-dark text-light pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 offset-md-1 text-center">
+        <img src="https://drive.google.com/uc?id=1nZ7eorCSJ9mv6HX1TkW0MNmyJqehGjYa" alt="logoBig" class="img-thumbnail" width="100" height="100">
+      </div>
+      <div class="col-md-2">
+          <h6 class="text-uppercase">The Basic</h6>
+        <ul class="ul-no-bullet px-1">
+          <li>About TMDb</li>
+          <li>Contact Us</li>
+          <li>Support Forums</li>
+          <li>API</li>
+          <li>System Status</li>
+        </ul>
+    </div>
+      <div class="col-md-2">
+        <h6 class="text-uppercase">GET INVOLVED</h6>
+        <ul class="ul-no-bullet px-1">
+          <li>About TMDb</li>
+          <li>Contact Us</li>
+          <li>Support Forums</li>
+          <li>API</li>
+          <li>System Status</li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-uppercase">Community</h6>
+        <ul class="ul-no-bullet px-1">
+          <li>About TMDb</li>
+          <li>Contact Us</li>
+          <li>Support Forums</li>
+          <li>API</li>
+          <li>System Status</li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-uppercase">Legal</h6>
+        <ul class="ul-no-bullet px-1">
+          <li>About TMDb</li>
+          <li>Contact Us</li>
+          <li>Support Forums</li>
+          <li>API</li>
+          <li>System Status</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>

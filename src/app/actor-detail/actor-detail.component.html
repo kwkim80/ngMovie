@@ -1,0 +1,73 @@
+<div id="actorDetail">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="rounded imgHeight100 " src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{actor.profile_path}}" alt="actorImage">
+        </div>
+        <div class="col-md-8">
+            <h2 class="font-weight-bold">{{actor.name}}</h2>
+            <div class="pt-4 pb-4">
+                <h5>Biography</h5>
+                <div>
+                    {{actor.biography||"We don't have a biography for"+actor.name+"."}}
+                </div>
+            </div>
+            <div class="pt-4 pb-4">
+                <h5>Known For</h5>
+                <div id="actorMovieList" class="row">
+                 
+                        <div class="row" *ngIf="knownFor!=null; then thenBlock; else elseBlock;"></div> 
+                        <ng-template #thenBlock>
+                            <div class="col-4 col-lg-2 " *ngFor="let movie of knownFor.slice(0,5)">
+                                <div class="card" >
+                                    <a href="/movies/{{movie.id}}">
+                                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
+                                    </a>
+                                    <div class="px-1 text-center ">
+                                        <h6 class="font-smaller"><small>{{movie.title}}</small></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            {{"We don't have any works for "+actor.name}}
+                        </ng-template>
+                    
+                   
+                </div>
+            </div>
+          
+        </div>
+    </div>
+    
+    <div class="row py-4">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Known_For</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+            </div>
+        </nav>
+        <div class="tab-content px-4 py-4" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+             <div class="row pb-5">
+                    <span *ngFor="let item of actor.also_known_as" class="px-3">
+                        [{{item}}],
+                    </span>
+                </div>
+             
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi voluptas consequatur dicta praesentium rerum quod iure! Quod adipisci unde, aliquam quia rem porro magni dicta accusantium accusamus officia vero illum.
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi voluptas consequatur dicta praesentium rerum quod iure! Quod adipisci unde, aliquam quia rem porro magni dicta accusantium accusamus officia vero illum.
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi voluptas consequatur dicta praesentium rerum quod iure! Quod adipisci unde, aliquam quia rem porro magni dicta accusantium accusamus officia vero illum.
+                
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+    
+            </div>
+        </div>
+      
+    </div>
+   
+</div>

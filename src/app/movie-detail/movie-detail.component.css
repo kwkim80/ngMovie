@@ -1,0 +1,40 @@
+ul.h-list li {
+    display:inline;
+    margin:0 20px;
+  }
+
+.btn-circle{
+   
+    width: 35px;
+    height: 35px;
+    padding: 2px 0px;
+    border-radius: 18px;
+    text-align: center;
+    font-size: 6px;
+    
+}
+
+#movieMainDetail{
+  background: url('../../assets/img/stars.jpg') center center no-repeat  rgba(0, 0, 0, 0.7);
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+  padding: 50px 0; 
+}
+
+.imgHeight100{
+    height: 100%;
+}
+.poster_wrapper{
+    min-width: 300px;
+    width: 300px;
+    height: auto;
+}
+
+#castList{
+    display: flex;
+    flex-direction: column;
+}
+.font-smaller{
+    font-size:smaller;
+}

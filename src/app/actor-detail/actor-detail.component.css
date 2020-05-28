@@ -1,0 +1,11 @@
+.imgHeight100{
+    width: 100%;
+    height: auto;
+    
+
+}
+.live_scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
