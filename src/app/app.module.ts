@@ -14,13 +14,15 @@ import {ActorsService} from './actors.service';
 import { ActorDetailComponent } from './actor-detail/actor-detail.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieCastComponent } from './movie-cast/movie-cast.component';
+import { MovieRecommendComponent } from './movie-recommend/movie-recommend.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    MovieCastComponent
+    MovieCastComponent,
+    MovieRecommendComponent
   ],
   imports: [
     BrowserModule,

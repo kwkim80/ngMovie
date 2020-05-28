@@ -56,16 +56,16 @@
                    <h3>Top Billed Cast</h3>
                 </div>
                 <div class="col-3 text-right">
-                   <span class="text-right">more</span>
+                   <span class="text-right" (click)="showCast()">more</span>
                 </div>
                
             </div>
             <div id="castList">
                 <div class="row">
-                    <div class="col-4 col-md-4 col-lg-2 " *ngFor="let cast of castes.slice(0,6)">
+                    <div class="col-4 col-md-4 col-lg-2" *ngFor="let cast of castes.slice(0,6)">
                         <div class="card"  (click)="onSelectByActor(cast)" >
                         
-                                <img  src="https://image.tmdb.org/t/p/w138_and_h175_face/{{cast.profile_path}}" class="card-img-top" alt="...">
+                                <img  src="{{cast.profile_path?'https://image.tmdb.org/t/p/w138_and_h175_face/'+cast.profile_path:'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}" class="card-img-top " alt="...">
                      
                             <div class="card-body px-1 text-center d-none d-md-block">
                                 <h6 class="font-smaller">{{cast.name}}</h6>
@@ -81,30 +81,7 @@
         
         
         <hr>
-        <!-- <div id="movieMedia">
-            <div class="row">
-                <div class="col-lg-2">
-                    <h3>Media</h3>
-                    
-                    
-                 </div>
-                 <div class="col-11 col-lg-8">
-                    <ul class="h-list">
-                        <li>Most Popular</li>
-                        <li>Backdrops</li>
-                        <li>Poster</li>
-                    </ul>
-                </div>
-                 <div class="col-1 col-lg-2 text-right">
-                    <span class="text-right">more</span>
-                 </div>
-            </div>
-            <div id="backdropList" class="row">
-                <div class="col-4" *ngFor="let backdrop of backdrops.slice(0,3)">
-                    <img src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/{{backdrop.file_path}}" alt="">
-                </div>
-            </div>
-        </div> -->
+        
         <div id="movieRecommend">
             <div class="row">
 
@@ -112,7 +89,7 @@
                    <h3>Recommendations</h3>
                 </div>
                 <div class="col-3 text-right">
-                   <span class="text-right">more</span>
+                   <span class="text-right" (click)="showRecommend()">more</span>
                 </div>
                
             </div>
@@ -122,13 +99,17 @@
                         <div class="card " >
                            
                             <a routerLink="/movies/{{recom.id}}">
-                                <img class="img-thumbnail rounded" src="https://image.tmdb.org/t/p/w250_and_h141_face/{{recom.backdrop_path}}" alt="Iron Man 3" >
+                                <img class="img-thumbnail rounded" src="https://image.tmdb.org/t/p/w250_and_h141_face/{{recom.backdrop_path}}" alt="{{recom.title}}" >
                             </a>
                             <div class="px-1 text-center ">
                                 <h6 class="font-smaller"><small>{{recom.title}}</small></h6>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div> 
+                    <router-outlet></router-outlet>
+
                 </div>
                
             </div>
@@ -149,7 +130,7 @@
      </div>
      </div>
      <div class="col-md-4" id="movieContentRight">
-         <h4><a routerLink="{{movie.homepage}}"><i class="fa fa-home"></i></a></h4>
+         <h4><a href="{{movie.homepage}}"><i class="fa fa-home"></i></a></h4>
          <div>
             <div class="row">
                 <div class="col-2 col-md-12">

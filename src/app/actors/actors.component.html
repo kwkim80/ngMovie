@@ -1,9 +1,9 @@
 <h2>Actor List</h2>
-<div class="text-right pb-3">
-  <form class="form-inline my-2 my-lg-0 text-right" (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
+<div class="pb-md-3 text-right">
+  <form class="form-inline-block my-2 my-lg-0 " (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
       <!-- <input [(ngModel)]="keyword" class="form-control mr-sm-2" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search"> -->
-      <input ngModel class="form-control mr-sm-2" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search">
-      <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input ngModel class="form-control mr-2 d-inline-block input-with-auto" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search">
+      <button  class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
 <table class="table table-striped font-size-sm">
@@ -29,16 +29,11 @@
         </td>
         <td>{{actor.gender}}</td>
         <!-- <td>{{actor.known_for_department}}</td> -->
-        <td>
-            <!-- <div class="btn-group" role="group" aria-label="Basic example" *ngFor="let item of actor.known_for">
-                <button (click)="onSelectByMovie(item)" type="button" class="btn btn-secondary">{{item.title}}</button>
-            </div> -->
-            <!-- <ul class="list-group" *ngFor="let item of actor.known_for">
-                <li (click)="onSelectByMovie(item)" class="list-group-item">{{item.title}}</li>
-              
-              </ul> -->
+        <td> 
+           
               <span *ngFor="let item of actor.known_for">
-                <button type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary mx-md-1 font-size-xs word-break">{{item.title}}</button>
+
+                <button *ngIf="item.title" type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary ml-1 my-1 font-size-xs word-break">{{item.title}}</button>
               </span>
               
              

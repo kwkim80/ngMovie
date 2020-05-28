@@ -29,26 +29,45 @@ export class MovieDetailComponent implements OnInit {
   constructor(private router:Router, private route:ActivatedRoute, private movieService:MoviesService, ) { }
 
   ngOnInit(): void {
+
+
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.movieId=parseInt(param.get('id'));
+    console.log(this.movieId);
+      this.movieService.getMovie(this.movieId).subscribe(data=>this.movie=data,
+        error=>this.errorMsg=error);
+      this.movieService.getCast(this.movieId).subscribe(data=>{this.castes=data.cast},
+        error=>this.errorMsg=error);
+      this.movieService.getMedia(this.movieId).subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
+        error=>this.errorMsg=error);
+      this.movieService.getMovieSub(this.movieId,"recommendations").subscribe(data=>{this.recommend=data.results;},
+        error=>this.errorMsg=error);
+        this.movieService.getMovieSub(this.movieId,"keywords").subscribe(data=>this.keywords=data.keywords,
+          error=>this.errorMsg=error);
     });
 
-    this.movieService.getMovie(this.movieId).subscribe(data=>this.movie=data,
-      error=>this.errorMsg=error);
-    this.movieService.getCast(this.movieId).subscribe(data=>{this.castes=data.cast},
-      error=>this.errorMsg=error);
-    this.movieService.getMedia(this.movieId).subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
-      error=>this.errorMsg=error);
-    this.movieService.getMovieSub(this.movieId,"recommendations").subscribe(data=>{this.recommend=data.results;},
-      error=>this.errorMsg=error);
-      this.movieService.getMovieSub(this.movieId,"keywords").subscribe(data=>this.keywords=data.keywords,
-        error=>this.errorMsg=error);
+    
   }
 
   onSelectByActor(actor){
-    console.log(actor);
-    this.router.navigate(['/actors',actor.id+"-"+(actor.name.replace(" ","-"))]);
+    //console.log(actor);
+
+    this.router.navigate([actor.id+"-"+(actor.name.replace(" ","-"))], {relativeTo:this.route});
   }
+
+  onSelectByRecom(recom){
+    this.router.navigate([recom.id], {relativeTo:this.route});
+  }
+
+  showCast(){
+    this.router.navigate(['cast'],{relativeTo:this.route});
+  }
+
+  showRecommend(){
+    this.router.navigate(['recommend'],{relativeTo:this.route});
+  }
+
+
 
 
 }

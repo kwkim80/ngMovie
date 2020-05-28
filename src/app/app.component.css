@@ -24,3 +24,8 @@ ul.h-list li {
     display:inline;
     margin:0 20px;
   }
+
+  .input-with-auto{
+    width: auto;
+    vertical-align: middle;
+}
