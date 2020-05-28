@@ -22,7 +22,7 @@
     <tbody>
       <tr *ngFor="let actor of actors; index as i"> 
         <!-- <th scope="row">{{actor.id}}</th> -->
-        <th  scope="row"><img class="rounded img-thumbnail px-1 py-1 px-lg-4 py-lg-4" (click)="onSelect(actor)" src="{{ actor.profile_path?'https://image.tmdb.org/t/p/w235_and_h235_face/'+actor.profile_path: '../../assets/img/noImg.png'}}"   alt=""></th>
+        <th  scope="row"><img class="rounded img-thumbnail px-1 py-1 px-lg-4 py-lg-4" (click)="onSelect(actor)" src="{{ actor.profile_path?'https://image.tmdb.org/t/p/w235_and_h235_face/'+actor.profile_path: 'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt=""></th>
         <td class="text-left align-self-center justify-content-center">
             <button (click)="onSelect(actor)" type="button" class="btn btn-outline-success font-size-xs">{{actor.name}}</button>
             <!-- <a (click)="onSelect(actor)" class="text-decoration-underline"><u>{{actor.name}}</u></a> -->

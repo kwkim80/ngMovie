@@ -20,7 +20,7 @@
     <tbody>
       <tr *ngFor="let movie of movies">
         
-        <th scope="row" class="px-1 py-1 px-lg-4 py-lg-4" ><img style="cursor: pointer;"  (click)="onSelect(movie)" class="rounded img-thumbnail " src="{{movie.poster_path? 'https://image.tmdb.org/t/p/w150_and_h225_bestv2/'+movie.poster_path: '../../assets/img/no-poster.jpg'}}" alt=""></th>
+        <th scope="row" class="px-1 py-1 px-lg-4 py-lg-4" ><img style="cursor: pointer;"  (click)="onSelect(movie)" class="rounded img-thumbnail " src="{{movie.poster_path? 'https://image.tmdb.org/t/p/w150_and_h225_bestv2/'+movie.poster_path: 'https://drive.google.com/uc?id=1lwyHfYvmD51naKbqGAAiIqh09CCgUXvZ'}}" alt=""></th>
         <td >
             <button (click)="onSelect(movie)"  type="button" class="btn btn-outline-primary font-size-xs ">{{movie.title}}</button>
             </td>
