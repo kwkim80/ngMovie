@@ -6,9 +6,13 @@
     
 }
 
-@media (max-width: 576px) { 
-    .font-size-xs{
+@media (max-width: 768px) { 
+    .font-size-sm{
         font-size:0.7rem;
+    }
+    .font-size-xs{
+        font-size:0.5rem;
+        padding: 0.1rem 0.3rem;
     }
     
 }

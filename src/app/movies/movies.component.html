@@ -6,15 +6,15 @@
         <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
 </div>
-<table class="table table-striped font-size-xs">
+<table class="table table-striped font-size-sm word-break ">
     <thead>
       <tr >
         <th scope="col" >Poster</th>
         <th scope="col" >Title</th>
-        <th scope="col">Released</th>
-        <th scope="col">language</th>
-        <th scope="col">vote_average</th>
-        <th scope="col">popularity</th>
+        <th scope="col" class="text-break">Released</th>
+        <th scope="col" >language</th>
+        <th scope="col" class="word-break">vote average</th>
+        <th scope="col" class="text-break"> popularity</th>
       </tr>
     </thead>
     <tbody>
@@ -22,11 +22,11 @@
         
         <th scope="row" class="px-1 py-1 px-lg-4 py-lg-4" ><img style="cursor: pointer;"  (click)="onSelect(movie)" class="rounded img-thumbnail " src="{{movie.poster_path? 'https://image.tmdb.org/t/p/w150_and_h225_bestv2/'+movie.poster_path: 'https://drive.google.com/uc?id=1lwyHfYvmD51naKbqGAAiIqh09CCgUXvZ'}}" alt=""></th>
         <td >
-            <button (click)="onSelect(movie)"  type="button" class="btn btn-outline-primary font-size-xs ">{{movie.title}}</button>
+            <button (click)="onSelect(movie)"  type="button" class="btn btn-outline-primary font-size-xs text-break" >{{movie.title}}</button>
             </td>
-        <td>{{movie.release_date}}</td>
+        <td class=" text-md-nowrap">{{movie.release_date}}</td>
         <td>{{movie.original_language}}</td>
-        <td>{{movie.vote_average}}</td>
+        <td class="text-break">{{movie.vote_average}}</td>
         <td>{{movie.popularity}}</td>
         
       </tr>

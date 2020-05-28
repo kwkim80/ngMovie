@@ -6,7 +6,7 @@
       <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
-<table class="table table-striped font-size-xs">
+<table class="table table-striped font-size-sm">
     <thead >
       <tr >
         <!-- <th scope="col">#</th> -->
@@ -14,17 +14,17 @@
         <th scope="col">name</th>
         <th scope="col">gender</th>
         <!-- <th scope="col">known_for_department</th> -->
-        <th scope="col">knownFor</th>
-        <th scope="col">popularity</th>
+        <th scope="col" >known_For</th>
+        <th scope="col" >popularity</th>
 
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let actor of actors; index as i"> 
         <!-- <th scope="row">{{actor.id}}</th> -->
-        <th  scope="row"><img class="rounded img-thumbnail px-1 py-1 px-lg-4 py-lg-4" (click)="onSelect(actor)" src="{{ actor.profile_path?'https://image.tmdb.org/t/p/w235_and_h235_face/'+actor.profile_path: 'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt=""></th>
+        <th  scope="row" class="px-1 py-1 px-lg-4 py-lg-4"><img class="rounded img-thumbnail " (click)="onSelect(actor)" src="{{ actor.profile_path?'https://image.tmdb.org/t/p/w235_and_h235_face/'+actor.profile_path: 'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt=""></th>
         <td class="text-left align-self-center justify-content-center">
-            <button (click)="onSelect(actor)" type="button" class="btn btn-outline-success font-size-xs">{{actor.name}}</button>
+            <button (click)="onSelect(actor)" type="button" class="btn btn-outline-success font-size-xs word-break">{{actor.name}}</button>
             <!-- <a (click)="onSelect(actor)" class="text-decoration-underline"><u>{{actor.name}}</u></a> -->
         </td>
         <td>{{actor.gender}}</td>
@@ -38,7 +38,7 @@
               
               </ul> -->
               <span *ngFor="let item of actor.known_for">
-                <button type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary mx-1 font-size-xs">{{item.title}}</button>
+                <button type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary mx-md-1 font-size-xs word-break">{{item.title}}</button>
               </span>
               
              
