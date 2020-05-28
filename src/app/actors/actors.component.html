@@ -6,9 +6,9 @@
       <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
-<table class="table table-striped">
-    <thead>
-      <tr>
+<table class="table table-striped font-size-xs">
+    <thead >
+      <tr >
         <!-- <th scope="col">#</th> -->
         <th scope="col">profile</th>
         <th scope="col">name</th>
@@ -24,7 +24,7 @@
         <!-- <th scope="row">{{actor.id}}</th> -->
         <th  scope="row"><img class="rounded img-thumbnail" (click)="onSelect(actor)" src="{{ actor.profile_path?'https://image.tmdb.org/t/p/w235_and_h235_face/'+actor.profile_path: '../../assets/img/noImg.png'}}"   alt=""></th>
         <td class="text-left align-self-center justify-content-center">
-            <button (click)="onSelect(actor)" type="button" class="btn btn-outline-success">{{actor.name}}</button>
+            <button (click)="onSelect(actor)" type="button" class="btn btn-outline-success font-size-xs">{{actor.name}}</button>
             <!-- <a (click)="onSelect(actor)" class="text-decoration-underline"><u>{{actor.name}}</u></a> -->
         </td>
         <td>{{actor.gender}}</td>
@@ -38,7 +38,7 @@
               
               </ul> -->
               <span *ngFor="let item of actor.known_for">
-                <button type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary mx-1">{{item.title}}</button>
+                <button type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary mx-1 font-size-xs">{{item.title}}</button>
               </span>
               
              
