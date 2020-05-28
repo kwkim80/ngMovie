@@ -1,58 +1,46 @@
 <div id="movieDetail">
-  <div class="row pl-md-5" id="movieMainDetail">
-     <div class="col-12 col-md-3  text-center poster_wrapper">
-        <img class="rounded img-thumbnail "src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{movie.poster_path}}" alt="">
+  <div class="row  " id="movieMainDetail">
+     <div class="col-12 col-md-5 col-lg-3 pl-md-5 text-center poster_wrapper">
+        <img class="rounded img-thumbnail" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{movie.poster_path}}" alt="">
      </div>
-     <div class="col-md-8 ml-md-5 pt-3">
-         <h4 class="font-weight-bold">{{movie.title}}({{movie.release_date.substr(0,4)}})</h4>
-         <div>
-             <ul class="h-list">
-                 <li>&bull;{{movie.release_date}} ({{movie.original_language}})</li>
-                 <li>&bull;
-                     <span *ngFor="let g of movie.genres;last as l;">
-                        {{g.name}}{{l?"":","}}
-                     </span>
-                    
-                 </li>
-                 <li>&bull;{{movie.runtime}} min</li>
-             </ul>
-             
+     <div class="col-md-7 col-lg-8 pt-3 pt-md-1 ml-xl-5 px-4">
+         <h4 class="font-weight-bold text-center text-md-left">{{movie.title}}({{movie.release_date.substr(0,4)}})</h4>
+         <div class="row">
+             <div class="col-lg-3">&bull; {{movie.release_date}} ({{movie.original_language}})</div>
+             <div class="col-lg-6">
+                &bull; 
+                <span *ngFor="let g of movie.genres;last as l;">
+                {{g.name}}{{l?"":","}}
+             </span></div>
+             <div class="col-lg-3">&bull;{{movie.runtime}} min</div>
+            
          </div>
-         <div>
-             <ul class="h-list">
-                 <li>User Score:{{movie.vote_average}}</li>
-                 <li>
-                    <button type="button" class="btn btn-dark btn-circle text-light">
-                        <i class="fa fa-list-alt fa-2x"></i>
-                    </button>
-                </li>
-                 <li>
-                    <button type="button" class="btn btn-dark btn-circle text-light">
-                        <i class="fa fa-heart-o fa-2x"></i>
-                    </button>
-                 </li>
-                 <li>
-                    <button type="button" class="btn btn-dark btn-circle text-light">
-                        <i class="fa fa-bookmark-o fa-2x"></i>
-                    </button>
-                 </li>
-                 <li>
-                    <button type="button" class="btn btn-dark btn-circle text-light">
-                        <i class="fa fa-star-o fa-2x"></i>
-                    </button>
-                 </li>
-                 <li>
-                     <span>
-                        <i class="fa fa-play fa-2s"></i> &nbsp; Play Trailer
-                     </span>
-                    
-                 </li>
-             </ul>
+         <div class="row">
+             <div class="col-12 col-lg-3 py-2 py-lg-4">User Score:{{movie.vote_average}}</div>
+             <div class="col-2 col-lg-1 offset-col-lg-1 py-2 py-lg-4"> <button type="button" class="btn btn-dark btn-circle text-light">
+                <i class="fa fa-list-alt fa-2x"></i>
+            </button></div>
+             <div class="col-2 col-lg-1 py-2 py-lg-4"><button type="button" class="btn btn-dark btn-circle text-light">
+                <i class="fa fa-heart-o fa-2x"></i>
+            </button></div>
+            <div class="col-2 col-lg-1 py-2 py-lg-4"> 
+                <button type="button" class="btn btn-dark btn-circle text-light">
+                <i class="fa fa-bookmark-o fa-2x"></i>
+                </button></div>
+            <div class="col-2 col-lg-1 offset-col-lg-1 py-2 py-lg-4 "> 
+                 <button type="button" class="btn btn-dark btn-circle text-light">
+                <i class="fa fa-star-o fa-2x"></i>
+                </button>
+            </div>
+             <div class="col-4 col-lg-3 py-2 py-lg-4"><span>
+                <i class="fa fa-play fa-2s"></i> &nbsp; Play Trailer</span>
+            </div>
+            
          </div>
-         <div class="font-italic">
+         <div class="font-italic py-4">
              {{movie.tagline}}
          </div>
-         <div class="pt-5">
+         <div class="pt-lg-5">
              <h4>Overview</h4>
              {{movie.overview}}
          </div>

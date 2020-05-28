@@ -29,6 +29,7 @@ ul.h-list li {
     min-width: 300px;
     width: 300px;
     height: auto;
+    text-align: center;
 }
 
 #castList{
