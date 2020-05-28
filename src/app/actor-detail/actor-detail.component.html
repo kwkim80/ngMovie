@@ -19,7 +19,7 @@
                         <ng-template #thenBlock>
                             <div class="col-4 col-lg-2 " *ngFor="let movie of knownFor.slice(0,5)">
                                 <div class="card" >
-                                    <a href="/movies/{{movie.id}}">
+                                    <a routerLink="/movies/{{movie.id}}">
                                         <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
                                     </a>
                                     <div class="px-1 text-center ">

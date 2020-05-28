@@ -133,7 +133,7 @@
                     <div class="col-6 col-lg-4" *ngFor="let recom of recommend.slice(0,3)">
                         <div class="card " >
                            
-                            <a href="/movies/{{recom.id}}">
+                            <a routerLink="/movies/{{recom.id}}">
                                 <img class="img-thumbnail" src="https://image.tmdb.org/t/p/w250_and_h141_face/{{recom.backdrop_path}}" alt="Iron Man 3" >
                             </a>
                             <div class="px-1 text-center ">
@@ -161,7 +161,7 @@
      </div>
      </div>
      <div class="col-md-4" id="movieContentRight">
-         <h4><a href="{{movie.homepage}}"><i class="fa fa-home"></i></a></h4>
+         <h4><a routerLink="{{movie.homepage}}"><i class="fa fa-home"></i></a></h4>
          <div>
             <div class="row">
                 <div class="col-2 col-md-12">
