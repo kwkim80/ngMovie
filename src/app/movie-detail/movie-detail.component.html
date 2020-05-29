@@ -96,7 +96,7 @@
             <div id="recommendList">
                 <div class="row">
                     <div class="col-6 col-lg-4" *ngFor="let recom of recommend.slice(0,3)">
-                        <div class="card " >
+                        <div  >
                            
                             <a routerLink="/movies/{{recom.id}}">
                                 <img class="img-thumbnail rounded" src="https://image.tmdb.org/t/p/w250_and_h141_face/{{recom.backdrop_path}}" alt="{{recom.title}}" >
