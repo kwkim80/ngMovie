@@ -15,10 +15,10 @@ const routes: Routes = [
   {path:"movies", component:MoviesComponent},
   {path:"movies/:id", component:MovieDetailComponent,
     children:[
-      {path:'cast', component:MovieCastComponent},
       {path:'recommend', component:MovieRecommendComponent}
     ]
   },
+  {path:"movies/:id/cast", component:MovieCastComponent},
   {path:"actors", component:ActorsComponent},
   {path:"actors/:id", component:ActorDetailComponent},
   {path:"**", component:PageNotComponent }

@@ -6,5 +6,7 @@ export interface ICast{
    "id": number,
    "name": string,
    "order": number,
-   "profile_path": string
+   "profile_path": string,
+   "job":string,
+   "department":string
 }

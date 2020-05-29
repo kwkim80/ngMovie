@@ -15,6 +15,9 @@ export interface IMovieSub{
     "vote_count":number,
     "width":number,
     "title":string,
+    "department":string,
+    "job":string,
+   
     backdrop_path: string,
       poster_path: string,
       popularity: number,

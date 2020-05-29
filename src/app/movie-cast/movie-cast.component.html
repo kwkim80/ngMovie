@@ -1,1 +1,53 @@
-<p>movie-cast works!</p>
+
+<div id="castDetail" class="no-gutter">
+    <div class="row headerBg py-3 px-3">
+        <div class="col-3 col-sm-2 col-lg-1">
+            <img src="https://image.tmdb.org/t/p/w58_and_h87_face/{{movie.poster_path}}" alt="posterImage" class="rounded ">
+        </div>
+        <div class="col-9 col-sm-10 col-lg-11">
+            <h2 class="font-weight-bold">{{movie.title}} <small class="text-secondary">({{movie.release_date.substr(0,4)}})</small></h2>
+            <div>
+               <i class="fa fa-long-arrow-left"></i> Back To the Main
+            </div>
+        </div>
+    </div>
+    <div class="row px-4">
+        <div class="col-6">
+            <h4 class="pt-4 pb-3">Cast <span class="text-secondary"><small>{{castes.length}}</small></span></h4>
+            <ul *ngFor="let cast of castes" class="list-unstyled">
+                <li>
+                   <div class="row">
+                        <div class="col-5 col-md-3 col-xl-2">
+                            <img src="{{cast.profile_path?'https://image.tmdb.org/t/p/w66_and_h66_face/'+cast.profile_path:'https://drive.google.com/uc?id=17DU9FK26AmznACEdf8Tsuq7t5MRjBtp3'}}" alt="{{cast.name}}" class="rounded">
+                            
+                        </div>
+                        <div  class="col-7 col-md-9 col-xl-10 line-height-narrow">
+                            <h6 class="">{{cast.name}}</h6>
+                            <span><small>{{cast.character}}</small></span>
+                        </div>
+                   </div>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <h4 class="pt-4 pb-3">Crew <span class="text-secondary"><small>{{crews.length}}</small></span></h4>
+            <ul *ngFor="let crew of crews" class="list-unstyled">
+                <li>
+                   <div class="row">
+                        <div class="col-5 col-md-3 col-xl-2">
+                            <img src="{{crew.profile_path?'https://image.tmdb.org/t/p/w66_and_h66_face/'+crew.profile_path:'https://drive.google.com/uc?id=17DU9FK26AmznACEdf8Tsuq7t5MRjBtp3'}}" alt="{{crew.name}}" class="rounded">
+                            
+                        </div>
+                        <div  class="col-7 col-md-9 col-xl-10 line-height-narrow">
+                            <h6 class="">{{crew.name}}</h6>
+                            <span><small>{{crew.job}}</small></span>
+                        </div>
+                   </div>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

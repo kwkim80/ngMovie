@@ -9,6 +9,7 @@ export interface IWrapper{
     cast:[],
     backdrops:[],
     posters:[],
-    keywords:[]
+    keywords:[],
+    crew:[]
 }
        

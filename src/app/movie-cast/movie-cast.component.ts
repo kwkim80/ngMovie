@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import { MoviesService } from '../movies.service';
+import { IMovieSub } from '../movieSub';
+import { IMovie } from '../movie';
 
 @Component({
   selector: 'app-movie-cast',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieCastComponent implements OnInit {
 
-  constructor() { }
+  public movieId;
+  public errorMsg;
+  public castes:IMovieSub[];
+  public crews:IMovieSub[];
+  public movie:IMovie;
+
+  constructor(private route:ActivatedRoute , private movieService:MoviesService) { }
 
   ngOnInit(): void {
-  }
+    this.route.paramMap.subscribe((param:ParamMap)=>{
+      this.movieId=parseInt(param.get('id'));
+      this.movieService.getCast(this.movieId).subscribe(data=>{this.castes=data.cast, this.crews=data.crew},
+        error=>this.errorMsg=error);
+      this.movieService.getMovie(this.movieId).subscribe(data=>this.movie=data,
+          error=>this.errorMsg=error);
+  })}
 
 }
