@@ -4,7 +4,7 @@
             <img class="rounded imgHeight100 " src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{actor.profile_path}}" alt="actorImage">
         </div>
         <div class="col-md-8">
-            <h2 class="font-weight-bold">{{actor.name}}</h2>
+            <h2 class="font-weight-bold pt-3 pt-md-0">{{actor.name}}</h2>
             <div class="pt-4 pb-4">
                 <h5>Biography</h5>
                 <div>
@@ -41,8 +41,93 @@
           
         </div>
     </div>
+
+    <div id="actorSubDetail">
+       
+            <div class="row pt-4">
+                <div class="col-md-4">
+                    <h3><i class="fa fa-facebook-official"></i>&nbsp;
+                    <i class="fa fa-twitter "></i>&nbsp;
+                    <i class="fa fa-instagram"></i>
+                    </h3>
+
+                    <div class="pt-3">
+                        <h4 class="font-weight-bold">Personal Info</h4>
+             
+                        <div class="row pt-2">
+                            <div class="col-3 col-md-12">
+                                <strong>Known For</strong>
+                             </div>
+                            <div class="col-9 col-md-12 text-left">
+                                {{actor.known_for_department}}
+                            </div>
+                         </div>
+                         <div class="row pt-2">
+                            <div class="col-3 col-md-12">
+                                <strong>Known Credits</strong>
+                             </div>
+                            <div class="col-9 col-md-12 text-left">       
+                                {{crews.length+castes.length}}
+                            </div>
+                         </div>
+                         <div class="row pt-2">
+                            <div class="col-3 col-md-12">
+                                <strong> Gender</strong>
+                             </div>
+                            <div class="col-9 col-md-12 text-left">
+                                {{actor.gender==1?"Male":actor.gender==2?"Female":"Variety"}}
+                            </div>
+                         </div>
+                         <div class="row pt-2" >
+                            <div class="col-3 col-md-12">
+                                <strong> Birthday</strong>
+                             </div>
+                            <div class="col-9 col-md-12 text-left">
+                                {{actor.birthday}}
+                            </div>
+                         </div>
+                         <div class="row pt-2">
+                            <div class="col-3 col-md-12">
+                                <strong> Place of Birth</strong>
+                             </div>
+                            <div class="col-9 col-md-12 text-left">
+                                {{actor.place_of_birth}}
+                            </div>
+                         </div>
+                         <div class="row pt-2">
+                            <div class="col-12">
+                                <strong> Also Known As</strong>
+                             </div>
+                            <div class="col-9 col-md-12 text-left pt-2" *ngFor="let item of actor.also_known_as">
+                                {{item}}
+                            </div>
+                         </div>
+                     </div>
+                     <hr>
+                </div>
+               
+                
+                <div class="col-md-8 pb-4">
+                    <h3 class="pt-3 pt-md-0">{{actor.known_for_department}}</h3>
+                    <ul class="list-group" *ngFor="let credit of castes; index as i">
+                        <li class="list-group-item" *ngIf="credit.release_date;">
+                            <span >{{credit.release_date.substr(0,4)}}</span>
+                            
+                           <i class="fa fa-circle-o pl-3 pr-4"></i> 
+                           {{credit.title?credit.title:""}}
+                             <span class="text-secondary word-break">as {{credit.character?credit.character:""}}</span>
+                             
+                        </li>
+                        
+                      </ul>
+                </div>
+
+            </div>
+
+        
+    </div>
     
-    <div class="row py-4">
+    <!-- <div class="row py-4">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
               <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Known_For</a>
@@ -71,6 +156,6 @@
             </div>
         </div>
       
-    </div>
+    </div> -->
    
 </div>

@@ -11,3 +11,7 @@
 .line-height-narrow{
     line-height:0.7rem;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}

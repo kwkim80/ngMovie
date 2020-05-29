@@ -8,5 +8,6 @@ export interface ICast{
    "order": number,
    "profile_path": string,
    "job":string,
-   "department":string
+   "department":string,
+   "release_date":string
 }

@@ -45,7 +45,7 @@ export class ActorsComponent implements OnInit {
   onSelect(actor){
     //console.log(actor);
    // this.router.navigate([,actor.id]);
-   this.actorIdName=actor.id+"-"+(actor.name.replace(" ","-"));
+   this.actorIdName=actor.id+"-"+(actor.name.split(" ").join("-"));
    this.router.navigate(['/actors',this.actorIdName]);
   }
 

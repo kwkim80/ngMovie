@@ -51,7 +51,7 @@ export class MovieDetailComponent implements OnInit {
 
   onSelectByActor(actor){
     //console.log(actor);
-    this.router.navigate(['/actors',actor.id+"-"+(actor.name.replace(" ","-"))]);
+    this.router.navigate(['/actors',actor.id+"-"+(actor.name.split(" ").join("-"))]);
     //this.router.navigate([actor.id+"-"+(actor.name.replace(" ","-"))], {relativeTo:this.route});
   }
 

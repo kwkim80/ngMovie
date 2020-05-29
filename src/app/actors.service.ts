@@ -4,6 +4,9 @@ import { IActor } from './actor';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry, filter} from 'rxjs/operators';
 import { IWrapper } from './wrapper';
+import { map } from 'rxjs/operators';
+import { ICast } from './cast';
+import { IMovieSub } from './movieSub';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +72,27 @@ export class ActorsService {
  
     return this.http.get<IWrapper>(this.url).pipe(retry(1),
     catchError(error=>{return throwError(error.message||"Server Error getActorSub()")}));
+  }
+
+  getActorCredit(idx, sub):Observable<IMovieSub>{
+    this.url="".concat(this.baseURL, 'person/',idx,'/',sub,'?api_key=',this.APIKEY,'&language=en-US'); 
+
+    this.data= this.http.get<IWrapper>(this.url).pipe(
+      map(events => events.cast.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()))
+    );
+    return this.data;
+    
+    // let  sortById = function(data) {
+    //   data.sort((a,b) => data.id - data.id);
+    // };
+    // return this.http.get<IWrapper>(this.url).pipe(
+    //   map(tap(sortById))
+    // );
+    // return this.http.get<IWrapper>(this.url).pipe(
+    //   map(events => events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()))
+    // );
+    return null;
+   
   }
 
   getActorbyName(name):Observable<IWrapper>{

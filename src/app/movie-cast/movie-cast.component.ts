@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { MoviesService } from '../movies.service';
 import { IMovieSub } from '../movieSub';
 import { IMovie } from '../movie';
@@ -17,7 +17,7 @@ export class MovieCastComponent implements OnInit {
   public crews:IMovieSub[];
   public movie:IMovie;
 
-  constructor(private route:ActivatedRoute , private movieService:MoviesService) { }
+  constructor(private route:ActivatedRoute , private movieService:MoviesService, private router:Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param:ParamMap)=>{
@@ -27,5 +27,10 @@ export class MovieCastComponent implements OnInit {
       this.movieService.getMovie(this.movieId).subscribe(data=>this.movie=data,
           error=>this.errorMsg=error);
   })}
+
+  onSelectByActor(person){
+    //console.log(person.name.split(" ").join("-"));
+    this.router.navigate(['/actors',person.id+"-"+(person.name.split(" ").join("-"))]);
+  }
 
 }
