@@ -81,7 +81,7 @@ export class MovieDetailComponent implements OnInit {
   onPopup(event){
     this.movieService.getMovieSub(this.movieId,"videos").subscribe(data=>{this.videos=data.results;
       this.trailer=this.videos.find(r=>r.type=="Trailer");
-      var videoLink="http://www.youtube.com/embed/"+this.trailer.key;
+      var videoLink="https://www.youtube.com/embed/"+this.trailer.key;
   
       console.log(videoLink);
 
