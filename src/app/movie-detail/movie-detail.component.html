@@ -102,7 +102,7 @@
                         <div  >
                            
                             <a routerLink="/movies/{{recom.id}}">
-                                <img class="img-thumbnail rounded" src="https://image.tmdb.org/t/p/w250_and_h141_face/{{recom.backdrop_path}}" alt="{{recom.title}}" >
+                                <img class="img-thumbnail rounded" src="{{recom.backdrop_path?'https://image.tmdb.org/t/p/w250_and_h141_face/'+recom.backdrop_path:'https://drive.google.com/uc?id=1e6FRD5GlhiqOmaJpnahyfsTZLe88pSXm'}}" alt="{{recom.title}}" >
                             </a>
                             <div class="px-1 text-center ">
                                 <h6 class="font-smaller"><small>{{recom.title}}</small></h6>
