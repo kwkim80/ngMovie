@@ -4,8 +4,14 @@
     
 
 }
-.live_scroll {
-    overflow-x: auto;
+.h-scrolling {
+    overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+
+  }
+
+  .breakDiv {
+    white-space:normal !important;
+  
   }

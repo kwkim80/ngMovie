@@ -6,44 +6,47 @@
      <div class="col-md-7 col-lg-8 pt-3 pt-md-1 ml-xl-5 px-4">
          <h4 class="font-weight-bold text-center text-md-left">{{movie.title}}({{movie.release_date.substr(0,4)}})</h4>
          <div class="row">
-             <div class="col-lg-4"><i class="fa fa-share-square-o px-2"></i> {{movie.release_date}} ({{movie.original_language}})</div>
-             <div class="col-lg-3 "><i class="fa fa-clock-o px-2"></i>{{movie.runtime}} min</div>
-             <div class="col-lg-5">
-                <i class="fa fa-film px-2"></i>
+             <div class="col-lg-4 pt-2"><i class="fa fa-share-square-o px-2 "></i> {{movie.release_date}} ({{movie.original_language}})</div>
+             <div class="col-lg-3  pt-2"><i class="fa fa-clock-o px-2 "></i>{{movie.runtime}} min</div>
+             <div class="col-lg-5 pt-2">
+                <i class="fa fa-film px-2 "></i>
                 <span *ngFor="let g of movie.genres;last as l;">
                 {{g.name}}{{l?"":","}}
              </span></div>
              
             
          </div>
-         <div class="row">
-             <div class="col-12 col-lg-3 py-2 py-lg-4 "><i class="fa fa-thumbs-o-up px-2"></i>User Score:{{movie.vote_average}}</div>
-             <div class="col-2 col-lg-1 offset-col-lg-1 py-2 py-lg-4"> <button type="button" class="btn btn-dark btn-circle text-light">
+         <div class="row py-2">
+             <div class="col-12 col-lg-3 py-2  "><i class="fa fa-thumbs-o-up px-2"></i>User Score:{{movie.vote_average}}</div>
+             <div class="col-2 col-lg-1 offset-col-lg-1  py-2"> <button type="button" class="btn btn-dark btn-circle text-light">
                 <i class="fa fa-list-alt fa-2x"></i>
             </button></div>
-             <div class="col-2 col-lg-1 py-2 py-lg-4"><button type="button" class="btn btn-dark btn-circle text-light">
+             <div class="col-2 col-lg-1 py-2 "><button type="button" class="btn btn-dark btn-circle text-light">
                 <i class="fa fa-heart-o fa-2x"></i>
             </button></div>
-            <div class="col-2 col-lg-1 py-2 py-lg-4"> 
+            <div class="col-2 col-lg-1 py-2 "> 
                 <button type="button" class="btn btn-dark btn-circle text-light">
                 <i class="fa fa-bookmark-o fa-2x"></i>
                 </button></div>
-            <div class="col-2 col-lg-1 offset-col-lg-1 py-2 py-lg-4 "> 
+            <div class="col-2 col-lg-1 offset-col-lg-1 py-2  "> 
                  <button type="button" class="btn btn-dark btn-circle text-light">
                 <i class="fa fa-star-o fa-2x"></i>
                 </button>
             </div>
-             <div class="col-4 col-lg-3 offset-lg-1 py-2 py-lg-4" >
-                <span (click)="onPopup($event)" data-link="https://www.youtube.com/embed/SUXWAEX2jlg" data-toggle="modal" data-target="#popupTrailer">
-                <i class="fa fa-play fa-2s"></i> &nbsp; Play Trailer</span>
+             <div class="col-4 col-lg-3 offset-lg-1 py-2" >
+                 <a class="cursor-pointer">
+                    <span (click)="onPopupVideo(trailer)" data-link="https://www.youtube.com/embed/SUXWAEX2jlg" data-toggle="modal" data-target="#popupTrailer">
+                        <i class="fa fa-play fa-2s"></i> &nbsp; Play Trailer</span>
+                 </a>
+                
             </div>
            
             
          </div>
-         <div class="font-italic py-4">
+         <div class="font-italic pt-2 text-info ">
              {{movie.tagline}}
          </div>
-         <div class="pt-lg-5">
+         <div class="pt-3">
              <h4>Overview</h4>
              {{movie.overview}}
          </div>
@@ -85,6 +88,37 @@
         
         <hr>
         
+        <div id="movieMedia">
+            <div class="row">
+
+                <div class=" col-lg-2">
+                   <h3>Media</h3>
+                  
+                   
+                </div>
+                <div class="col-10 col-lg-8 text-left text-lg-right">
+                    <ul class="h-list px-0">
+                    <!-- <li class="" dir="auto"><a id="popular" class="media_panel" href="#">Most Popular</a></li> -->
+                    <li dir="auto"><a id="videos" class="media_panel" href="#">Videos <span>3</span></a></li>
+                    <li dir="auto" class="active"><a id="backdrops" class="media_panel" href="#">Backdrops <span>20</span></a></li>
+                    <li dir="auto" class=""><a id="posters" class="media_panel" href="#">Posters <span>76</span></a></li>
+                    <!-- <li class="view_all"><a href="/movie/24428-the-avengers/images/backdrops?language=en-US">View All Backdrops</a></li> -->
+                  </ul></div>
+                <div class="col-2 col-lg-2 text-right">
+                   <span class="text-right" >more</span>
+                </div>
+               
+            </div>
+            <div class="h-scrolling">
+                <div class="video-thumbnail mx-1"  *ngFor="let video of videos" (click)="onPopupVideo(video)" data-toggle="modal" data-target="#popupTrailer">
+                    <img  src="{{video.poster_path}}" alt="Video thumbnail" />
+                </div>
+            </div>
+
+            
+        </div>
+
+        <hr>
         <div id="movieRecommend">
             <div class="row">
 
@@ -97,10 +131,9 @@
                
             </div>
             <div id="recommendList">
-                <div class="row">
-                    <div class="col-6 col-lg-4" *ngFor="let recom of recommend.slice(0,3)">
-                        <div  >
-                           
+                <div  class="h-scrolling">
+                    <div class="col-6 col-lg-4 d-inline-block mx-1" *ngFor="let recom of recommend.slice(0,10)">
+                        <div  >             
                             <a routerLink="/movies/{{recom.id}}">
                                 <img class="img-thumbnail rounded" src="{{recom.backdrop_path?'https://image.tmdb.org/t/p/w250_and_h141_face/'+recom.backdrop_path:'https://drive.google.com/uc?id=1e6FRD5GlhiqOmaJpnahyfsTZLe88pSXm'}}" alt="{{recom.title}}" >
                             </a>
@@ -116,20 +149,9 @@
                 </div>
                
             </div>
-            <!-- <div class="row">
-                <div class="col-6 col-md-4"  *ngFor="let item of recommend">
-                    <div class="card">
-                        <a href="/movie/68721?language=en-US" title="Iron Man 3" alt="Iron Man 3">
-                            <img class="px-1" src="https://image.tmdb.org/t/p/w250_and_h141_face/{{item.backdrop_path}}" alt="Iron Man 3" >
-                        </a>
-                        <div class="px-0">
-                            <a class="title" href="/movie/68721" >{{item.title.length<20?item.title:item.title.substr(0,20)+"..."}}</a>
-                            <span class=" text-right" style="float: right;">{{item.vote_average}}%</span>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div> -->
+
+        
+          
      </div>
      </div>
      <div class="col-md-4" id="movieContentRight">
@@ -188,11 +210,15 @@
 
 
 <!-- youtube link -->
-<!-- <a   (click)="onPopup($event)" data-link="http://www.youtube.com/embed/SUXWAEX2jlg" data-title="How to install SASS">trailer</a>
+<a   (click)="onPopupTrailer($event)" data-link="http://www.youtube.com/embed/SUXWAEX2jlg" data-title="How to install SASS">trailer</a>
 <br>
-<a class="popup"  data-link="https://www.youtube.com/watch?v=SUXWAEX2jlg" data-title="How to install Node.js">Node.js</a>
-<div id="video-view">
-</div> -->
+<!-- <a class="popup"  data-link="https://www.youtube.com/watch?v=SUXWAEX2jlg" data-title="How to install Node.js">Node.js</a> -->
+
+    <!-- <div class="class-video">
+        <iframe src="https://www.youtube.com/embed/hA6hldpSTF8" id="modalFrame" style="width: 100%; height: 300px;">
+        </iframe>
+    </div> -->
+
 
 
 <!-- bootstrap modal -->

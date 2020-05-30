@@ -38,10 +38,10 @@ export class ActorDetailComponent implements OnInit {
         error=>this.errorMsg=error);
   
     
-      this.actorService.getActorbyName(this.actorName).subscribe(data=>{this.actors=data.results;
-        this.searchedActor=this.actors.find(r=>r.id===this.actorId);
-        this.knownFor=this.searchedActor.known_for;},
-        error=>this.errorMsg=error);
+      // this.actorService.getActorbyName(this.actorName).subscribe(data=>{this.actors=data.results;
+      //   this.searchedActor=this.actors.find(r=>r.id===this.actorId);
+      //   this.knownFor=this.searchedActor.known_for;},
+      //   error=>this.errorMsg=error);
 
       // this.actorService.getActorSub(this.actorId,"combined_credits").subscribe(data=>{
       //     this.data=data;this.castes=this.data.cast  ;this.crews=this.data.crew;
@@ -52,7 +52,10 @@ export class ActorDetailComponent implements OnInit {
         this.data=data;
         this.castes=this.data.cast.sort((a:IMovieSub, b:IMovieSub) =>
         new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
-        this.crews=this.data.crew;
+        this.crews=this.data.crew.sort((a:IMovieSub, b:IMovieSub) =>
+        new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+        // this.knownFor=this.data.cast.sort((a:IMovieSub, b:IMovieSub) =>
+        // b <.r a.popularity ? -1 : 1);
         console.log(this.castes);
     }, error=>this.errorMsg=error)
 

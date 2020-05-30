@@ -13,17 +13,17 @@
             </div>
             <div class="pt-4 pb-4">
                 <h5>Known For</h5>
-                <div id="actorMovieList" class="row">
+                <div id="actorMovieList" class="h-scrolling">
                  
-                        <div class="row" *ngIf="knownFor!=null; then thenBlock; else elseBlock;"></div> 
+                        <div class="h-scrolling " *ngIf="castes!=null; then thenBlock; else elseBlock;"></div> 
                         <ng-template #thenBlock>
-                            <div class="col-4 col-lg-2 " *ngFor="let movie of knownFor.slice(0,5)">
-                                <div class="card" >
+                            <div class="col-3 col-lg-2 d-inline-block px-1" *ngFor="let movie of castes.slice(0,10)">
+                                <div class="card " >
                                     <a routerLink="/movies/{{movie.id}}">
                                         <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
-                                    </a>
+                                    </a> 
                                     <div class="px-1 text-center ">
-                                        <h6 class="font-smaller"><small>{{movie.title}}</small></h6>
+                                        <h6 class="font-smaller "><small class="breakDiv">{{movie.title.split(" ").slice(0,4).join(" ")}}</small></h6>
                                     </div>
                                 </div>
                             </div>
@@ -111,11 +111,14 @@
                     <h3 class="pt-3 pt-md-0">{{actor.known_for_department}}</h3>
                     <ul class="list-group" *ngFor="let credit of castes; index as i">
                         <li class="list-group-item" *ngIf="credit.release_date;">
-                            <span >{{credit.release_date.substr(0,4)}}</span>
                             
-                           <i class="fa fa-circle-o pl-3 pr-4"></i> 
-                           {{credit.title?credit.title:""}}
-                             <span class="text-secondary word-break">as {{credit.character?credit.character:""}}</span>
+                                <span >{{credit.release_date.substr(0,4)}}</span>
+                            
+                                <i class="fa fa-circle-o pl-3 pr-4"></i> 
+                                <a routerLink="/movies/{{credit.id}}"> {{credit.title?credit.title:""}} </a>
+                                  <span class="text-secondary word-break">as {{credit.character?credit.character:""}}</span>
+                           
+                            
                              
                         </li>
                         

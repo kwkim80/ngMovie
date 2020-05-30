@@ -48,8 +48,12 @@ export class MovieDetailComponent implements OnInit {
         error=>this.errorMsg=error);
       this.movieService.getCast(this.movieId).subscribe(data=>{this.castes=data.cast},
         error=>this.errorMsg=error);
-      // this.movieService.getMedia(this.movieId).subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
-      //   error=>this.errorMsg=error);
+      this.movieService.getMovieSub(this.movieId,"videos").subscribe(data=>{this.videos=data.results;
+        this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
+        this.trailer=this.videos.find(r=>r.type=="Trailer");
+     console.log(this.videos) });
+      this.movieService.getMedia(this.movieId).subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
+        error=>this.errorMsg=error);
       this.movieService.getMovieSub(this.movieId,"recommendations").subscribe(data=>{this.recommend=data.results;},
         error=>this.errorMsg=error);
         this.movieService.getMovieSub(this.movieId,"keywords").subscribe(data=>this.keywords=data.keywords,
@@ -78,8 +82,8 @@ export class MovieDetailComponent implements OnInit {
   }
 
 
-  onPopup(event){
-    this.movieService.getMovieSub(this.movieId,"videos").subscribe(data=>{this.videos=data.results;
+  onPopupTrailer(event){
+
       this.trailer=this.videos.find(r=>r.type=="Trailer");
       var videoLink="https://www.youtube.com/embed/"+this.trailer.key;
   
@@ -95,11 +99,26 @@ export class MovieDetailComponent implements OnInit {
       var $title = $("<h1>").text($this.data("title"));
        $("#video-view").html($title).append($iframe);
        $iframe.wrap("<div class='class-video'>");
-    
-    },
-        error=>this.errorMsg=error);
-       
-      
+
+  }
+
+  onPopupVideo(video){
+    //this.trailer=this.videos.find(r=>r.type=="Trailer");
+      var videoLink="https://www.youtube.com/embed/"+video.key;
+  
+      console.log(videoLink);
+
+      var target = event.target || event.srcElement || event.currentTarget;
+       //console.log(target);
+       var $this = $(target);
+      //  var $iframe = $("<iframe>").attr("src", $this.data("link")).css({"width": 500, "height": 300});
+     
+      //console.log(widthPx);
+      var $iframe = $("<iframe>").attr("src", videoLink).attr("id","modalFrame").css({"width": "100%", "height": 300});
+      $("#popupTrailerModalLabel").text(video.type);
+      var $title = $("<h1>").text($this.data("title"));
+       $("#video-view").html($title).append($iframe);
+       $iframe.wrap("<div class='class-video'>");
   }
   closeModal(event){
  
