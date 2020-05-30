@@ -39,3 +39,8 @@ ul.h-list li {
 .font-smaller{
     font-size:smaller;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}
+

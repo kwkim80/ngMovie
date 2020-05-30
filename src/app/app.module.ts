@@ -15,7 +15,15 @@ import { ActorDetailComponent } from './actor-detail/actor-detail.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieCastComponent } from './movie-cast/movie-cast.component';
 import { MovieRecommendComponent } from './movie-recommend/movie-recommend.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+;
+
+
+import { CustomMaterialModule } from './custom-material/custom-material.module';
+
+import { LoggerModule } from 'ngx-logger';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +36,12 @@ import { MovieRecommendComponent } from './movie-recommend/movie-recommend.compo
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule
+    
   ],
   providers: [ActorsService],
   bootstrap: [AppComponent]

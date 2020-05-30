@@ -19,6 +19,8 @@ export interface IMovieSub{
     "job":string,
    "known_for_department":string,
    "release_date":string,
+   "type":string,
+   "key":string,
     backdrop_path: string,
       poster_path: string,
       popularity: number,

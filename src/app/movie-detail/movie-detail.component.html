@@ -6,17 +6,18 @@
      <div class="col-md-7 col-lg-8 pt-3 pt-md-1 ml-xl-5 px-4">
          <h4 class="font-weight-bold text-center text-md-left">{{movie.title}}({{movie.release_date.substr(0,4)}})</h4>
          <div class="row">
-             <div class="col-lg-3">&bull; {{movie.release_date}} ({{movie.original_language}})</div>
-             <div class="col-lg-6">
-                &bull; 
+             <div class="col-lg-4"><i class="fa fa-share-square-o px-2"></i> {{movie.release_date}} ({{movie.original_language}})</div>
+             <div class="col-lg-3 "><i class="fa fa-clock-o px-2"></i>{{movie.runtime}} min</div>
+             <div class="col-lg-5">
+                <i class="fa fa-film px-2"></i>
                 <span *ngFor="let g of movie.genres;last as l;">
                 {{g.name}}{{l?"":","}}
              </span></div>
-             <div class="col-lg-3">&bull;{{movie.runtime}} min</div>
+             
             
          </div>
          <div class="row">
-             <div class="col-12 col-lg-3 py-2 py-lg-4">User Score:{{movie.vote_average}}</div>
+             <div class="col-12 col-lg-3 py-2 py-lg-4 "><i class="fa fa-thumbs-o-up px-2"></i>User Score:{{movie.vote_average}}</div>
              <div class="col-2 col-lg-1 offset-col-lg-1 py-2 py-lg-4"> <button type="button" class="btn btn-dark btn-circle text-light">
                 <i class="fa fa-list-alt fa-2x"></i>
             </button></div>
@@ -32,9 +33,11 @@
                 <i class="fa fa-star-o fa-2x"></i>
                 </button>
             </div>
-             <div class="col-4 col-lg-3 py-2 py-lg-4"><span>
+             <div class="col-4 col-lg-3 offset-lg-1 py-2 py-lg-4" >
+                <span (click)="onPopup($event)" data-link="http://www.youtube.com/embed/SUXWAEX2jlg" data-toggle="modal" data-target="#popupTrailer">
                 <i class="fa fa-play fa-2s"></i> &nbsp; Play Trailer</span>
             </div>
+           
             
          </div>
          <div class="font-italic py-4">
@@ -55,17 +58,17 @@
                 <div class="col-9">
                    <h3>Top Billed Cast</h3>
                 </div>
-                <div class="col-3 text-right">
-                   <span class="text-right" (click)="showCast()">more</span>
+                <div class="col-3 text-right cursor-pointer">
+                   <span class="text-right " (click)="showCast()">more</span>
                 </div>
                
             </div>
             <div id="castList">
                 <div class="row">
-                    <div class="col-4 col-md-4 col-lg-2" *ngFor="let cast of castes.slice(0,6)">
+                    <div class="col-4 col-md-4 col-lg-2 pt-2" *ngFor="let cast of castes.slice(0,6)">
                         <div class="card"  (click)="onSelectByActor(cast)" >
                         
-                                <img  src="{{cast.profile_path?'https://image.tmdb.org/t/p/w138_and_h175_face/'+cast.profile_path:'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}" class="card-img-top "  alt="...">
+                                <img  class="cursor-pointer card-img-top " src="{{cast.profile_path?'https://image.tmdb.org/t/p/w138_and_h175_face/'+cast.profile_path:'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt="...">
                      
                             <div class="card-body px-1 text-center d-none d-md-block">
                                 <h6 class="font-smaller">{{cast.name}}</h6>
@@ -175,3 +178,42 @@
 
     </div>
 </div>
+<!-- <div class="page">
+    <p><a href="#media-popup"  (click)="onPopup(url)"data-media="//www.youtube.com/embed/YoXa2Pl7Hk0">click me</a></p>
+    
+    <div class="popup" id="media-popup">
+        <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div> -->
+
+
+<!-- youtube link -->
+<!-- <a   (click)="onPopup($event)" data-link="http://www.youtube.com/embed/SUXWAEX2jlg" data-title="How to install SASS">trailer</a>
+<br>
+<a class="popup"  data-link="https://www.youtube.com/watch?v=SUXWAEX2jlg" data-title="How to install Node.js">Node.js</a>
+<div id="video-view">
+</div> -->
+
+
+<!-- bootstrap modal -->
+<!-- <button type="button" (click)="onPopup($event)" data-link="http://www.youtube.com/embed/SUXWAEX2jlg"  class="btn btn-primary" data-toggle="modal" data-target="#popupTrailer">
+    Launch demo modal
+  </button> -->
+
+<!-- Modal -->
+<div class="modal fade " id="popupTrailer" tabindex="-1" role="dialog" aria-labelledby="popupTrailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header  px-0 py-0">
+          <h5 class="modal-title px-2 " id="popupTrailerModalLabel">Trailer</h5>
+          <button type="button" class="close" (click)="closeModal($event)" data-dismiss="modal" aria-label="Close">
+            <span class="pr-2" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body px-0 py-0 text-center" id="video-view">
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
