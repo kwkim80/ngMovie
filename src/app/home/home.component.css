@@ -1,0 +1,37 @@
+
+#cover{
+    background: #ddd url('../../assets/img/stageMain.jpg') center top no-repeat;
+    background-size:cover;
+    color: whitesmoke;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  
+ 
+}
+#cover-caption{
+    width:100%;
+    height: 100%;
+}
+
+#maintitleBox{
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.h-50{
+    height: 50%;
+}
+.w-50{
+    max-width: 50%;
+    height: auto;
+}
+.border-top-1{
+    border-top: 1px solid #dee2e6!important;
+}
+
+.popularItem{
+    background: rgb(253, 253, 253,0.9);
+    border-right: 1px solid #e1e1e1!important;
+    border-bottom: 1px solid #e1e1e1!important;
+}

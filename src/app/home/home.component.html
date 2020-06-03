@@ -1,3 +1,73 @@
+<section id="cover">
+  <div id="cover-caption">
+      <div class="container pt-md-5 pb-md-5 no-gutter py-2" >
+        <div class="row text-center" >
+          <div class="col-8 offset-2 text-center pt-3 rounded" id="maintitleBox">
+            <h1 class="display-5">Welcome to The Movie Data Base</h1>
+            <div>Just like the old Bootstrap, but better. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit. Optio quibusdam quis, repudiandae reprehenderit doloremque fugiat molestias, corporis
+                voluptas.</div>
+             <div class="pt-3 pb-0">
+              <form action="" class="form-inline   justify-content-center">
+                <div class="form-group px-1">
+                    <label class="sr-only">Name</label>
+                    <input type="text" class="form-control form-control-lg" placeholder="kw2446">
+                </div>
+                <div class="form-group px-1">
+                    <label class="sr-only">Email</label>
+                    <input type="text" class="form-control form-control-lg" placeholder="kw2446@gmail.com">
+                </div>
+                <button type="submit" class="btn btn-success btn-lg ">okay, go!</button>
+            </form>
+    
+            <br>
+    
+            <a href="#nav-main" class="btn btn-secondary-outline btn-sm" role="button">&darr;</a>      
+             </div>
+               
+        </div>
+       
+        </div>
+          
+      </div>
+  </div>
+</section>
+<div id="mainNew">
+  <div class="container py-4 ">
+    <div class="row ">
+      <div class="col-md-6 px-4">
+        <h4>What's Popular?</h4>
+        <div class="row my-2 rounded popularItem" *ngFor="let movie of movies.slice(0,5)">
+          <div class="col-3 px-4">
+            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class="w-50 py-1" alt="{{movie.title}}">
+          </div>
+          <div class="col-9 row">
+            <div class="col-8">{{movie.title}}</div>
+            <div class="col-4 text-right"><i class="fa fa-star-o pr-2"></i>{{movie.popularity}}</div>
+            <div class="col-12"><i class="fa fa-share-square-o px-2 pr-2"></i>{{movie.release_date}}</div>
+
+          </div>
+        </div>
+      
+      </div>
+      <div class="col-md-6 px-4">
+        <h4>Trending</h4>
+        <div class="row my-2 rounded popularItem" *ngFor="let tv of tvs.slice(0,5)">
+          <div class="col-3 px-4">
+            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{tv.poster_path}}" class="w-50 py-1" alt="{{tv.name}}">
+          </div>
+          <div class="col-9 row">
+            <div class="col-8">{{tv.name}}</div>
+            <div class="col-4 text-right"><i class="fa fa-star-o pr-2"></i>{{tv.popularity}}</div>
+            <div class="col-12"><i class="fa fa-share-square-o px-2 pr-2"></i>{{tv.first_air_date}}</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
 <div id="carousel">
   <div id="carousel-home" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -37,44 +107,52 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
+</div> -->
 
 <div id="homeContent" class="py-4">
-    <h2>Latest News</h2>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">userId</th>
-        <th scope="col">id</th>
-        <th scope="col">title</th>
-        <th scope="col">detail</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let post of posts.slice((pageNum-1)*20,pageNum*20); index as i;">
-        <th scope="row">{{i+1}}</th>
-        <td>{{post.userId}}</td>
-        <td>{{post.id}}</td>
-        <td>{{post.title}}</td>
-        <td><button type="button" class="btn btn-info">Detail</button></td>
-      </tr>
-      
-    </tbody>
-  </table>
-  <hr>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" (click)="onPage(1)">1</a></li>
-      <li class="page-item"><a class="page-link" (click)="onPage(2)">2</a></li>
-      <li class="page-item"><a class="page-link" (click)="onPage(3)">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
+  
+    <div class="container">
+      <h2>Latest News</h2>
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">userId</th>
+                <th scope="col">id</th>
+                <th scope="col">title</th>
+                <th scope="col">detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let post of posts.slice((pageNum-1)*10,pageNum*10); index as i;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{post.userId}}</td>
+                <td>{{post.id}}</td>
+                <td>{{post.title}}</td>
+                <td><button type="button" class="btn btn-info">Detail</button></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <hr>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" (click)="onPage(1)">1</a></li>
+              <li class="page-item"><a class="page-link" (click)="onPage(2)">2</a></li>
+              <li class="page-item"><a class="page-link" (click)="onPage(3)">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
 </div>
 <hr>

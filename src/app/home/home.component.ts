@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HomeService } from '../home.service';
+import { IMovie } from '../movie';
 // import { MatSort } from '@angular/material/sort';
 // import { MatTableDataSource } from '@angular/material/table';
 // import { NGXLogger } from 'ngx-logger';
@@ -40,16 +42,29 @@ export class HomeComponent implements OnInit {
   // @ViewChild(MatSort, { static: true }) sort: MatSort;
   public posts;
   public pageNum=1;
-  
+  public data;
+  public tvs:IMovie[];
+  public movies:IMovie[];
+  public errorMsg;
 
   // constructor(private http:HttpClient, private logger: NGXLogger) { }
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private homeService:HomeService) { }
 
     ngOnInit(): void {
+      
+      this.homeService.getData('movie/popular',this.pageNum).subscribe(data=>{this.movies=data.results,
+      console.log(this.movies)},
+        error=>this.errorMsg=error);
+        this.homeService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results,
+          console.log(this.tvs)},
+          error=>this.errorMsg=error);
       this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts=>{
         this.posts=posts;
+        //console.log(this.posts)
       }) 
      // this.dataSource.sort = this.sort;
+       
+      
     }
 
         onPage(pageNum){

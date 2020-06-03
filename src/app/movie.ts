@@ -1,5 +1,5 @@
 export interface IMovie{
-    "popularity": number,
+      "popularity": number,
       "id": number,
       "video": boolean,
       "vote_count": number,
@@ -19,5 +19,7 @@ export interface IMovie{
       "runtime": number,
       "tagline":string,
       "homepage":string,
-      "status": string
+      "status": string,
+      "first_air_date":string,
+      "name":string
 }

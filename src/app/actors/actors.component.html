@@ -1,65 +1,68 @@
-<h2>Actor List</h2>
-<div class="pb-md-3 text-right">
-  <form class="form-inline-block my-2 my-lg-0 " (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
-      <!-- <input [(ngModel)]="keyword" class="form-control mr-sm-2" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search"> -->
-      <input ngModel class="form-control mr-2 d-inline-block input-with-auto" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search">
-      <button  class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
-<table class="table table-striped font-size-sm">
-    <thead >
-      <tr >
-        <!-- <th scope="col">#</th> -->
-        <th scope="col">profile</th>
-        <th scope="col">name</th>
-        <th scope="col">gender</th>
-        <!-- <th scope="col">known_for_department</th> -->
-        <th scope="col" >known_For</th>
-        <th scope="col" >popularity</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let actor of actors; index as i"> 
-        <!-- <th scope="row">{{actor.id}}</th> -->
-        <th  scope="row" class="px-1 py-1 px-lg-4 py-lg-4"><img class="rounded img-thumbnail " (click)="onSelect(actor)" src="{{ actor.profile_path?'https://image.tmdb.org/t/p/w235_and_h235_face/'+actor.profile_path: 'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt=""></th>
-        <td class="text-left align-self-center justify-content-center">
-            <button (click)="onSelect(actor)" type="button" class="btn btn-outline-success font-size-xs word-break">{{actor.name}}</button>
-            <!-- <a (click)="onSelect(actor)" class="text-decoration-underline"><u>{{actor.name}}</u></a> -->
-        </td>
-        <td>{{actor.gender}}</td>
-        <!-- <td>{{actor.known_for_department}}</td> -->
-        <td> 
-           
-              <span *ngFor="let item of actor.known_for">
-
-                <button *ngIf="item.title" type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary ml-1 my-1 font-size-xs word-break">{{item.title}}</button>
-              </span>
-              
+<div class="container pt-md-5 pb-md-5 no-gutter pt-4">
+  <h2>Actor List</h2>
+  <div class="pb-md-3 text-right">
+    <form class="form-inline-block my-2 my-lg-0 " (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
+        <!-- <input [(ngModel)]="keyword" class="form-control mr-sm-2" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search"> -->
+        <input ngModel class="form-control mr-2 d-inline-block input-with-auto" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search">
+        <button  class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  </div>
+  <table class="table table-striped font-size-sm">
+      <thead >
+        <tr >
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">profile</th>
+          <th scope="col">name</th>
+          <th scope="col">gender</th>
+          <!-- <th scope="col">known_for_department</th> -->
+          <th scope="col" >known_For</th>
+          <th scope="col" >popularity</th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actor of actors; index as i"> 
+          <!-- <th scope="row">{{actor.id}}</th> -->
+          <th  scope="row" class="px-1 py-1 px-lg-4 py-lg-4"><img class="rounded img-thumbnail " (click)="onSelect(actor)" src="{{ actor.profile_path?'https://image.tmdb.org/t/p/w235_and_h235_face/'+actor.profile_path: 'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt=""></th>
+          <td class="text-left align-self-center justify-content-center">
+              <button (click)="onSelect(actor)" type="button" class="btn btn-outline-success font-size-xs word-break">{{actor.name}}</button>
+              <!-- <a (click)="onSelect(actor)" class="text-decoration-underline"><u>{{actor.name}}</u></a> -->
+          </td>
+          <td>{{actor.gender}}</td>
+          <!-- <td>{{actor.known_for_department}}</td> -->
+          <td> 
              
-        </td>
-        <td>{{actor.popularity}}</td>
-      
-      </tr>
-      
-    </tbody>
-  </table>
-  <hr>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" (click)="onPage(1)">1</a></li>
-      <li class="page-item">
-          <a class="page-link" (click)="onPage(2)">2</a>
-          <!-- <button type="button" class="btn btn-info" (click)="onPage(2)"> 2</button> -->
+                <span *ngFor="let item of actor.known_for">
+  
+                  <button *ngIf="item.title" type="button" (click)="onSelectByMovie(item)" class="btn btn-outline-primary ml-1 my-1 font-size-xs word-break">{{item.title}}</button>
+                </span>
+                
+               
+          </td>
+          <td>{{actor.popularity}}</td>
+        
+        </tr>
+        
+      </tbody>
+    </table>
+    <hr>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
         </li>
-      <li class="page-item">
-        <a class="page-link" (click)="onPage(3)">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
+        <li class="page-item"><a class="page-link" (click)="onPage(1)">1</a></li>
+        <li class="page-item">
+            <a class="page-link" (click)="onPage(2)">2</a>
+            <!-- <button type="button" class="btn btn-info" (click)="onPage(2)"> 2</button> -->
+          </li>
+        <li class="page-item">
+          <a class="page-link" (click)="onPage(3)">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+
+</div>

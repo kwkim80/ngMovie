@@ -10,7 +10,7 @@ import { MovieCastComponent } from './movie-cast/movie-cast.component';
 import { MovieRecommendComponent } from './movie-recommend/movie-recommend.component';
 
 const routes: Routes = [
-  {path:"", redirectTo:'/movies', pathMatch:'full'},
+  {path:"", redirectTo:'/home', pathMatch:'full'},
   {path:"home", component:HomeComponent},
   {path:"movies", component:MoviesComponent},
   {path:"movies/:id", component:MovieDetailComponent,
