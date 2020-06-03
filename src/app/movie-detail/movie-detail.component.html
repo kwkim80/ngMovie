@@ -110,8 +110,9 @@
                
             </div>
             <div class="h-scrolling">
-                <div class="video-thumbnail mx-1"  *ngFor="let video of videos" (click)="onPopupVideo(video)" data-toggle="modal" data-target="#popupTrailer">
-                    <img  src="{{video.poster_path}}" alt="Video thumbnail" />
+                <div class="video-thumbnail mx-1 px-2"  [ngStyle]="{width: '40%', height:'auto'}"  *ngFor="let video of videos" (click)="onPopupVideo(video)" data-toggle="modal" data-target="#popupTrailer">
+                    <img  src="{{video.poster_path}}" [ngStyle]="{width: '100%', height:'auto'}"  alt="Video thumbnail"  />
+                   <!-- <div [ngStyle]="{backgroundImage:'url('+video.poster_path+')'}"></div>     -->
                 </div>
             </div>
 
@@ -133,9 +134,9 @@
             <div id="recommendList">
                 <div  class="h-scrolling">
                     <div class="col-6 col-lg-4 d-inline-block mx-1" *ngFor="let recom of recommend.slice(0,10)">
-                        <div  >             
+                        <div [style.width]="recom.backdrop_path?'100%':'60%'" >             
                             <a routerLink="/movies/{{recom.id}}">
-                                <img class="img-thumbnail rounded" src="{{recom.backdrop_path?'https://image.tmdb.org/t/p/w250_and_h141_face/'+recom.backdrop_path:'https://drive.google.com/uc?id=1e6FRD5GlhiqOmaJpnahyfsTZLe88pSXm'}}" alt="{{recom.title}}" >
+                                <img class="img-thumbnail rounded"    src="{{recom.backdrop_path?'https://image.tmdb.org/t/p/w250_and_h141_face/'+recom.backdrop_path:'https://drive.google.com/uc?id=1e6FRD5GlhiqOmaJpnahyfsTZLe88pSXm'}}" alt="{{recom.title}}" >
                             </a>
                             <div class="px-1 text-center ">
                                 <h6 class="font-smaller"><small>{{recom.title}}</small></h6>

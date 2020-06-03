@@ -52,7 +52,7 @@
       </div>
       <div class="col-md-6 px-4 ">
         <h4 class="py-3">Trending</h4>
-        <div class="row my-2 rounded popularItem" *ngFor="let tv of tvs.slice(0,5)" routerLink="/tv/{{tv.id}}">
+        <div class="row my-2 rounded popularItem" *ngFor="let tv of tvs.slice(0,5)" routerLink="/movies/{{tv.id}}">
           <div class="col-3 px-4">
             <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{tv.poster_path}}" class="w-70-100-50 py-1" alt="{{tv.name}}">
           </div>
@@ -62,6 +62,7 @@
             <div class="col-12"><i class="fa fa-share-square-o px-2 pr-2"></i>{{tv.first_air_date}}</div>
 
           </div>
+          
         </div>
       </div>
     </div>
@@ -170,7 +171,7 @@
               delectus asperiores.</p>
           <hr>
           <div class="row">
-              <div class="col-4 col-lg-3 p-2" *ngFor="let movie of tops.slice(0,10)">
+              <div class="col-4 col-lg-2 p-2" *ngFor="let movie of tops.slice(0,10)">
                 <div class="card "  >
                     <a routerLink="/movies/{{movie.id}}">
                         <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">

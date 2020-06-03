@@ -47,6 +47,10 @@
 
 .popularItem{
     background: rgba(200, 200, 200, 0.062);
-    border-right: 1px solid #d4d4d4!important;
-    border-bottom: 1px solid #d4d4d4!important;
+    border-right: 1px solid #c4c4c4!important;
+    border-bottom: 1px solid #c4c4c4!important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
 }
