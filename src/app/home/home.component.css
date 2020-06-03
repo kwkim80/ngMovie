@@ -19,19 +19,34 @@
     background: rgba(0, 0, 0, 0.2);
 }
 
-.h-50{
-    height: 50%;
-}
-.w-50{
-    max-width: 50%;
+.w-70-100-50{
+    max-width: 70%;
     height: auto;
+}
+@media (min-width:768px) { 
+    .w-70-100-50{
+        max-width: 100%;
+        height: auto;
+    }
+}
+@media (min-width:992px) { 
+    .w-70-100-50{
+        max-width: 60%;
+        height: auto;
+    }
+}
+.w-30{
+    max-width: 30%;
+    height: auto;
+    width: 30%;
+    height:30%
 }
 .border-top-1{
     border-top: 1px solid #dee2e6!important;
 }
 
 .popularItem{
-    background: rgb(253, 253, 253,0.9);
-    border-right: 1px solid #e1e1e1!important;
-    border-bottom: 1px solid #e1e1e1!important;
+    background: rgba(200, 200, 200, 0.062);
+    border-right: 1px solid #d4d4d4!important;
+    border-bottom: 1px solid #d4d4d4!important;
 }

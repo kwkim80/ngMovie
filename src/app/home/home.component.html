@@ -1,29 +1,29 @@
 <section id="cover">
   <div id="cover-caption">
-      <div class="container pt-md-5 pb-md-5 no-gutter py-2" >
+      <div class="container pt-md-5 pb-md-5 no-gutter py-3" >
         <div class="row text-center" >
-          <div class="col-8 offset-2 text-center pt-3 rounded" id="maintitleBox">
-            <h1 class="display-5">Welcome to The Movie Data Base</h1>
-            <div>Just like the old Bootstrap, but better. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Optio quibusdam quis, repudiandae reprehenderit doloremque fugiat molestias, corporis
+          <div class="col-10 offset-1 text-center py-4 rounded" id="maintitleBox">
+            <h4 >Welcome to The Movie Data Base</h4>
+            <div class="px-lg-5">Just like the old Bootstrap, but better. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.Optio quibusdam quis, repudiandae reprehenderit doloremque fugiat molestias, corporis
                 voluptas.</div>
-             <div class="pt-3 pb-0">
-              <form action="" class="form-inline   justify-content-center">
-                <div class="form-group px-1">
+           
+              <form action="" class="form-inline   justify-content-center pt-3">
+                <div class="form-group px-1 pt-2">
                     <label class="sr-only">Name</label>
-                    <input type="text" class="form-control form-control-lg" placeholder="kw2446">
+                    <input type="text" class="form-control form-control-lg" placeholder="Your name">
                 </div>
-                <div class="form-group px-1">
+                <div class="form-group px-1 pt-2">
                     <label class="sr-only">Email</label>
-                    <input type="text" class="form-control form-control-lg" placeholder="kw2446@gmail.com">
+                    <input type="text" class="form-control form-control-lg" placeholder="YourEmail@gmail.com">
                 </div>
-                <button type="submit" class="btn btn-success btn-lg ">okay, go!</button>
+                <div class=" form-group px-1  pt-2">
+                  <button type="submit" class="btn btn-success btn-lg ">okay, go!</button>
+                </div>
+               
             </form>
     
-            <br>
-    
-            <a href="#nav-main" class="btn btn-secondary-outline btn-sm" role="button">&darr;</a>      
-             </div>
+         
                
         </div>
        
@@ -33,13 +33,13 @@
   </div>
 </section>
 <div id="mainNew">
-  <div class="container py-4 ">
+  <div class="container  ">
     <div class="row ">
-      <div class="col-md-6 px-4">
-        <h4>What's Popular?</h4>
+      <div class="col-md-6 px-4 ">
+        <h4 class="py-3">What's Popular?</h4>
         <div class="row my-2 rounded popularItem" *ngFor="let movie of movies.slice(0,5)">
           <div class="col-3 px-4">
-            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class="w-50 py-1" alt="{{movie.title}}">
+            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class=" py-1 w-70-100-50" alt="{{movie.title}}">
           </div>
           <div class="col-9 row">
             <div class="col-8">{{movie.title}}</div>
@@ -50,11 +50,11 @@
         </div>
       
       </div>
-      <div class="col-md-6 px-4">
-        <h4>Trending</h4>
+      <div class="col-md-6 px-4 ">
+        <h4 class="py-3">Trending</h4>
         <div class="row my-2 rounded popularItem" *ngFor="let tv of tvs.slice(0,5)">
           <div class="col-3 px-4">
-            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{tv.poster_path}}" class="w-50 py-1" alt="{{tv.name}}">
+            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{tv.poster_path}}" class="w-70-100-50 py-1" alt="{{tv.name}}">
           </div>
           <div class="col-9 row">
             <div class="col-8">{{tv.name}}</div>
@@ -108,29 +108,33 @@
     </a>
   </div>
 </div> -->
-
-<!-- <div id="homeContent" class="py-4">
+ <!-- <div id="homeContent" class="py-4">
   
     <div class="container">
       <h2>Latest News</h2>
       <div class="row">
         <div class="col-12">
-          <table class="table">
+          <table class="table table-striped ">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">userId</th>
-                <th scope="col">id</th>
+    
+  
+                <th scope="col">poster</th>
                 <th scope="col">title</th>
+                <th scope="col">score</th>
+                <th scope="col">score</th>
+                <th scope="col">score</th>
                 <th scope="col">detail</th>
+                
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let post of posts.slice((pageNum-1)*10,pageNum*10); index as i;">
-                <th scope="row">{{i+1}}</th>
-                <td>{{post.userId}}</td>
-                <td>{{post.id}}</td>
-                <td>{{post.title}}</td>
+              <tr *ngFor="let top of tops.slice((pageNum-1)*10,pageNum*10); index as i;">
+                <td ><img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{top.poster_path}}"  class="py5 w-30" alt=""></td>
+                <td>{{top.title}}</td>
+                <td>{{top.vote_average}}</td>
+                <td>{{top.vote_average}}</td>
+                <td>{{top.vote_average}}</td>
                 <td><button type="button" class="btn btn-info">Detail</button></td>
               </tr>
               
@@ -154,5 +158,57 @@
       </div>
     </div>
 
-</div>
-<hr> -->
+</div> -->
+<hr>
+
+<section id="news">
+  <div class="section-content">
+      <div class="container">
+          <h3>Lastest News</h3>
+          <p class="lear">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, nobis rem sunt neque
+              at similique, dolores aut esse qui sint minus fugit praesentium saepe architecto maiores quisquam in
+              delectus asperiores.</p>
+          <hr>
+          <div class="row">
+              <div class="col-4 col-lg-3 p-2" *ngFor="let movie of tops.slice(0,10)">
+                <div class="card "  >
+                    <a routerLink="/movies/{{movie.id}}">
+                        <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
+                    </a> 
+                    <div class="card-block p-2">
+                      <h6 class="card-title">{{movie.title}}</h6>
+                      <p class="card-text d-none d-md-block">{{movie.overview.slice(0,80)}}...</p>
+                  </div>
+                </div>
+            </div>
+
+                
+
+           
+          </div>
+         
+
+          <!-- <nav class="text-xs-center">
+              <ul class="pagination">
+                  <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                      </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                      </a>
+                  </li>
+              </ul>
+          </nav> -->
+      </div>
+  </div>
+</section>

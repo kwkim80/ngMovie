@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   public tvs:IMovie[];
   public movies:IMovie[];
   public errorMsg;
+  public tops:IMovie[];
 
   // constructor(private http:HttpClient, private logger: NGXLogger) { }
   constructor(private http:HttpClient, private homeService:HomeService) { }
@@ -58,6 +59,9 @@ export class HomeComponent implements OnInit {
         this.homeService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results,
           console.log(this.tvs)},
           error=>this.errorMsg=error);
+          this.homeService.getData('movie/top_rated',this.pageNum).subscribe(data=>{this.tops=data.results,
+            console.log(this.tops)},
+            error=>this.errorMsg=error);
       // this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts=>{
       //   this.posts=posts;
       //   //console.log(this.posts)
