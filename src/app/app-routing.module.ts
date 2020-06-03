@@ -8,6 +8,8 @@ import { ActorDetailComponent } from './actor-detail/actor-detail.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieCastComponent } from './movie-cast/movie-cast.component';
 import { MovieRecommendComponent } from './movie-recommend/movie-recommend.component';
+import { TvsComponent } from './tvs/tvs.component';
+import { TvDetailComponent } from './tv-detail/tv-detail.component';
 
 const routes: Routes = [
   {path:"", redirectTo:'/home', pathMatch:'full'},
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path:"movies/:id/cast", component:MovieCastComponent},
   {path:"actors", component:ActorsComponent},
   {path:"actors/:id", component:ActorDetailComponent},
+  {path:"tv", component:TvsComponent},
+  {path:"tv/:id", component:TvDetailComponent},
   {path:"**", component:PageNotComponent }
 
 ];
@@ -38,5 +42,7 @@ export const routingComponents=[
   MovieDetailComponent,
   MovieCastComponent,
   MovieRecommendComponent,
+  TvsComponent,
+  TvDetailComponent,
   PageNotComponent
 ]

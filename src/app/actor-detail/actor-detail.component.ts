@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router'
-import {ActorsService} from '../actors.service'
-import { IActor } from '../actor';
-import { IMovie } from '../movie';
-import { inherits } from 'util';
+
 import { IMovieSub } from '../movieSub';
 import { map } from 'rxjs/operators';
+import { QueryService } from '../query.service';
+import { Iitem } from '../item';
+
 @Component({
   selector: 'app-actor-detail',
   templateUrl: './actor-detail.component.html',
@@ -13,18 +13,18 @@ import { map } from 'rxjs/operators';
 })
 export class ActorDetailComponent implements OnInit {
   public actorId;
-  public actor:IActor;
+  public actor:Iitem;
   private data;
-  private actors:IActor[];
+  private actors:Iitem[];
   public errorMsg;
-  public knownFor:IMovie[];
+  public knownFor:Iitem[];
   public actorName;
-  public searchedActor:IActor;
+  public searchedActor:Iitem;
   public hasData=false;
-  public castes:IMovieSub[];
-  public crews:IMovieSub[];
+  public castes:Iitem[];
+  public crews:Iitem[];
 
-  constructor(private router:Router, private route:ActivatedRoute, private actorService:ActorsService) { }
+  constructor(private router:Router, private route:ActivatedRoute, private queryService:QueryService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap)=>{
@@ -34,7 +34,7 @@ export class ActorDetailComponent implements OnInit {
       this.actorName=name;
       //console.log(this.actorId+"-"+this.actorName);
 
-      this.actorService.getActor(this.actorId).subscribe(data=>{this.actor=data;this.actorName=this.actor.name;},
+      this.queryService.getItem('person',this.actorId).subscribe(data=>{this.actor=data;this.actorName=this.actor.name;},
         error=>this.errorMsg=error);
   
     
@@ -48,11 +48,12 @@ export class ActorDetailComponent implements OnInit {
       //     console.log(this.data);
       // }, error=>this.errorMsg=error)
 
-      this.actorService.getActorSub(this.actorId,"combined_credits").subscribe(data=>{
+
+      this.queryService.getItemSub('person',this.actorId,"combined_credits").subscribe(data=>{
         this.data=data;
-        this.castes=this.data.cast.sort((a:IMovieSub, b:IMovieSub) =>
+        this.castes=this.data.cast.sort((a:Iitem, b:Iitem) =>
         new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
-        this.crews=this.data.crew.sort((a:IMovieSub, b:IMovieSub) =>
+        this.crews=this.data.crew.sort((a:Iitem, b:Iitem) =>
         new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
         // this.knownFor=this.data.cast.sort((a:IMovieSub, b:IMovieSub) =>
         // b <.r a.popularity ? -1 : 1);

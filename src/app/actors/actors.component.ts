@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {ActorsService} from '../actors.service';
-import { IActor } from '../actor';
+
 import {Router,ActivatedRoute, ParamMap} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import { QueryService } from '../query.service';
+import { Iitem } from '../item';
 
 @Component({
   selector: 'app-actors',
@@ -13,7 +14,7 @@ import {NgForm} from '@angular/forms';
 
 export class ActorsComponent implements OnInit {
 
-  public actors:IActor[];
+  public actors:Iitem[];
   private data;
   public errorMsg;
   private actorIdName;
@@ -24,7 +25,7 @@ export class ActorsComponent implements OnInit {
   // //private _url: string="/assets/data/employees.json";
   // public keyword="tom";
   // private url = "".concat(this.baseURL, 'search/person?api_key=',this.APIKEY,'&language=en-US&query=',this.keyword); 
-  constructor(private actorService:ActorsService, private http: HttpClient, private router:Router) { }
+  constructor(private queryService:QueryService, private http: HttpClient, private router:Router) { }
 
   ngOnInit(): void {
     // this.http.get(this.url).subscribe(data=>{
@@ -34,7 +35,7 @@ export class ActorsComponent implements OnInit {
 
     // });
     
-    this.actorService.getActors(this.keyword?this.keyword:"a","1").subscribe(data=>{this.data=data,
+    this.queryService.getSearch("person",this.keyword?this.keyword:"a","1").subscribe(data=>{this.data=data,
       this.actors=this.data.results},
       error=>this.errorMsg=error);
     // this.actorService.getActors().subscribe(data=>this.actors=data);
@@ -60,14 +61,14 @@ export class ActorsComponent implements OnInit {
     this.keyword=form.value.keyword
     //console.log(this.keyword);
 
-    this.actorService.getActors(form.value.keyword,"1").subscribe(data=>{this.data=data;
+    this.queryService.getSearch('person',form.value.keyword,"1").subscribe(data=>{this.data=data;
       this.actors=this.data.results;},
       error=>this.errorMsg=error);
   }
 
   onPage(page){
     //console.log(this.keyword+":"+page);
-    this.actorService.getActors(this.keyword?this.keyword:"a", page).subscribe(data=>{this.data=data;
+    this.queryService.getSearch('person',this.keyword?this.keyword:"a", page).subscribe(data=>{this.data=data;
       this.actors=this.data.results;},
       error=>this.errorMsg=error);
   }

@@ -7,6 +7,7 @@ import { IWrapper } from './wrapper';
 import { map } from 'rxjs/operators';
 import { ICast } from './cast';
 import { IMovieSub } from './movieSub';
+import { Iitem } from './item';
 
 @Injectable({
   providedIn: 'root'
@@ -78,7 +79,7 @@ export class ActorsService {
     this.url="".concat(this.baseURL, 'person/',idx,'/',sub,'?api_key=',this.APIKEY,'&language=en-US'); 
 
     this.data= this.http.get<IWrapper>(this.url).pipe(
-      map(events => events.cast.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()))
+      map(events => events.cast.sort((a:Iitem, b:Iitem) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()))
     );
     return this.data;
     

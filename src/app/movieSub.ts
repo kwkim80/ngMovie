@@ -24,6 +24,6 @@ export interface IMovieSub{
     backdrop_path: string,
       poster_path: string,
       popularity: number,
-      video: boolean,
+      video: boolean
      
 }

@@ -1,23 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
-import {MoviesService} from '../movies.service';
-
 import {Router, ParamMap, ActivatedRoute} from '@angular/router';
-
 import * as $ from 'jquery' 
-import { IWrapper } from '../wrapper';
 import { QueryService } from '../query.service';
 import { Iitem } from '../item';
 
 @Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+  selector: 'app-tv-detail',
+  templateUrl: './tv-detail.component.html',
+  styleUrls: ['./tv-detail.component.css']
 })
-export class MovieDetailComponent implements OnInit {
+export class TvDetailComponent implements OnInit {
 
-  public movieId;
-  public movie:Iitem;
+  public tvId;
+  public tv:Iitem;
   public errorMsg;
   public castes:Iitem[];
   public data;
@@ -40,22 +35,22 @@ export class MovieDetailComponent implements OnInit {
  
 
     this.route.paramMap.subscribe((param:ParamMap)=>{
-      this.movieId=parseInt(param.get('id'));
-   // console.log(this.movieId);
-      this.queryService.getItem('movie',this.movieId).subscribe(data=>this.movie=data,
+      this.tvId=parseInt(param.get('id'));
+   // console.log(this.tvId);
+      this.queryService.getItem('tv',this.tvId).subscribe(data=>{this.tv=data;console.log(this.tv)},
         error=>this.errorMsg=error);
 
         //casting people
-      this.queryService.getItemSub('movie',this.movieId,'credits').subscribe(data=>{this.castes=data.cast},
+      this.queryService.getItemSub('tv',this.tvId,'credits').subscribe(data=>{this.castes=data.cast},
         error=>this.errorMsg=error);
-      this.queryService.getItemSub('movie',this.movieId,"videos").subscribe(data=>{this.videos=data.results;
+      this.queryService.getItemSub('tv',this.tvId,"videos").subscribe(data=>{this.videos=data.results;
         this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
         this.trailer=this.videos.find(r=>r.type=="Trailer");});
-      this.queryService.getItemSub('movie',this.movieId,'images').subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
+      this.queryService.getItemSub('tv',this.tvId,'images').subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
         error=>this.errorMsg=error);
-      this.queryService.getItemSub('movie',this.movieId,"recommendations").subscribe(data=>{this.recommend=data.results;},
+      this.queryService.getItemSub('tv',this.tvId,"recommendations").subscribe(data=>{this.recommend=data.results;},
         error=>this.errorMsg=error);
-        this.queryService.getItemSub('movie',this.movieId,"keywords").subscribe(data=>this.keywords=data.keywords,
+        this.queryService.getItemSub('tv',this.tvId,"keywords").subscribe(data=>this.keywords=data.keywords,
           error=>this.errorMsg=error);
     });
 

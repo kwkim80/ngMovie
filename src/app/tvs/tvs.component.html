@@ -1,0 +1,68 @@
+<div class="container pt-md-5 pb-md-5 no-gutter pt-4">
+    <h2>TV List</h2>
+    <div class=" pb-md-3 text-right">
+        <form class="form-inline-block my-2 my-lg-0 " (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
+            <!-- <input [(ngModel)]="keyword" class="form-control mr-sm-2" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search"> -->
+            <input ngModel class="form-control mr-2 d-inline-block input-with-auto "  name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search">
+            <button  class="btn btn-success my-2 my-sm-0 " type="submit">Search</button>
+          </form>
+    </div>
+    <div class="row" id="tvItemList">
+        <div class="col-4 col-md-2 p-3" *ngFor="let item of tvs">
+          <!-- <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{item.poster_path}}" alt="noImg"> -->
+           <div class="card  " >
+            <a routerLink="/tv/{{item.id}}">
+                <img src="{{item.poster_path?'https://image.tmdb.org/t/p/w220_and_h330_face/'+item.poster_path:'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg'}}" class="card-img-top" alt="{{item.name}}_NoImg">
+            </a> 
+            <div class=" content text-center px-1  py-2  ">
+                <div class="consensus  ">
+                    <span class="btn btn-dark btn-sm rounded-circle p-1 border">73%</span>
+                      
+                </div>
+                <h6 class="font-smaller pt-2 "><small class="breakDiv">{{item.name.split(" ").slice(0,4).join(" ")}}</small></h6>
+            </div>
+        </div>
+        </div>
+
+    </div>
+      <hr>
+      <div *ngIf="keyword!=null; then pageSearch; else pagePopular"></div>
+      <ng-template #pageSearch>
+        <nav aria-label="Page navigation example pageSearch">
+            <ul class="pagination justify-content-center">
+              <li class="page-item " [class.disabled]="pageSet === 0" >
+                <a class="page-link" (click)="onPageSearch(keyword,(pageSet-1)*10+1)">Previous</a>
+              </li>
+      
+              <li class="page-item" *ngFor="let num of numbers; ">
+                  <a class="page-link" (click)="onPageSearch(keyword,num+1)">{{num+1}}</a></li>
+             
+              <li class="page-item" [class.disabled]="this.totalPage<=((this.pageSet+1)*10)">
+                <a class="page-link" (click)="onPageSearch(keyword,(pageSet+1)*10+1)">Next</a>
+              </li>
+            </ul>
+          </nav>
+    </ng-template>
+      <ng-template #pagePopular>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item " [class.disabled]="pageSet === 0" >
+                <a class="page-link" (click)="onPage((pageSet-1)*10+1)">Previous</a>
+              </li>
+      
+              <li class="page-item" *ngFor="let num of numbers; ">
+                  <a class="page-link" (click)="onPage(num+1)">{{num+1}}</a></li>
+             
+              <li class="page-item" [class.disabled]="this.totalPage<=((this.pageSet+1)*10)">
+                <a class="page-link" (click)="onPage((pageSet+1)*10+1)">Next</a>
+              </li>
+            </ul>
+          </nav>
+    </ng-template>
+   
+    
+      <!-- <span bn-range="i in -5..5">
+        {{ i }}
+    </span> -->
+  </div>
+  

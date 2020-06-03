@@ -1,5 +1,6 @@
 import { ICast } from './cast';
 import { IMovieSub } from './movieSub';
+import { Iitem } from './item';
 
 
 export interface IWrapper{
@@ -8,10 +9,10 @@ export interface IWrapper{
     total_pages:number,
     total_results:number
     id:number,
-    cast:IMovieSub[],
+    cast:[],
     backdrops:[],
     posters:[],
     keywords:[],
-    crew:IMovieSub[]
+    crew:[]
 }
        

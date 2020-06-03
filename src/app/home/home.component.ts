@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HomeService } from '../home.service';
 import { IMovie } from '../movie';
+import { QueryService } from '../query.service';
+import { Iitem } from '../item';
 // import { MatSort } from '@angular/material/sort';
 // import { MatTableDataSource } from '@angular/material/table';
 // import { NGXLogger } from 'ngx-logger';
@@ -43,31 +45,26 @@ export class HomeComponent implements OnInit {
   public posts;
   public pageNum=1;
   public data;
-  public tvs:IMovie[];
-  public movies:IMovie[];
+  public tvs:Iitem[];
+  public movies:Iitem[];
   public errorMsg;
-  public tops:IMovie[];
+  public tops:Iitem[];
 
   // constructor(private http:HttpClient, private logger: NGXLogger) { }
-  constructor(private http:HttpClient, private homeService:HomeService) { }
+  constructor(private http:HttpClient, private queyService:QueryService) { }
 
     ngOnInit(): void {
       
-      this.homeService.getData('movie/popular',this.pageNum).subscribe(data=>{this.movies=data.results,
+      this.queyService.getData('movie/popular',this.pageNum).subscribe(data=>{this.movies=data.results,
       console.log(this.movies)},
         error=>this.errorMsg=error);
-        this.homeService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results,
+        this.queyService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results,
           console.log(this.tvs)},
           error=>this.errorMsg=error);
-          this.homeService.getData('movie/top_rated',this.pageNum).subscribe(data=>{this.tops=data.results,
+          this.queyService.getData('movie/top_rated',this.pageNum).subscribe(data=>{this.tops=data.results,
             console.log(this.tops)},
             error=>this.errorMsg=error);
-      // this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts=>{
-      //   this.posts=posts;
-      //   //console.log(this.posts)
-      // }) 
-     // this.dataSource.sort = this.sort;
-       
+     
       
     }
 

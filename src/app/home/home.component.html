@@ -37,7 +37,7 @@
     <div class="row ">
       <div class="col-md-6 px-4 ">
         <h4 class="py-3">What's Popular?</h4>
-        <div class="row my-2 rounded popularItem" *ngFor="let movie of movies.slice(0,5)">
+        <div class="row my-2 rounded popularItem" *ngFor="let movie of movies.slice(0,5)" routerLink="/movies/{{movie.id}}">
           <div class="col-3 px-4">
             <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class=" py-1 w-70-100-50" alt="{{movie.title}}">
           </div>
@@ -52,7 +52,7 @@
       </div>
       <div class="col-md-6 px-4 ">
         <h4 class="py-3">Trending</h4>
-        <div class="row my-2 rounded popularItem" *ngFor="let tv of tvs.slice(0,5)">
+        <div class="row my-2 rounded popularItem" *ngFor="let tv of tvs.slice(0,5)" routerLink="/tv/{{tv.id}}">
           <div class="col-3 px-4">
             <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{tv.poster_path}}" class="w-70-100-50 py-1" alt="{{tv.name}}">
           </div>
@@ -163,7 +163,7 @@
 
 <section id="news">
   <div class="section-content">
-      <div class="container">
+      <div class="container pb-4">
           <h3>Lastest News</h3>
           <p class="lear">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, nobis rem sunt neque
               at similique, dolores aut esse qui sint minus fugit praesentium saepe architecto maiores quisquam in

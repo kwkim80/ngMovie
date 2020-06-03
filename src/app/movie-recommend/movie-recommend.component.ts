@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MoviesService} from '../movies.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { IMovieSub } from '../movieSub';
+import { QueryService } from '../query.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ public isLoading = true;
 public timer = null;
 
 
-  constructor(private movieService:MoviesService,private route:ActivatedRoute ) {
+  constructor(private queryService:QueryService,private route:ActivatedRoute ) {
 
     // console.warn( "Parent component initialized." );
     // console.log(this.route.params['id']);

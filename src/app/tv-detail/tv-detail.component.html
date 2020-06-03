@@ -1,0 +1,245 @@
+<div id="tvDetail" class="container pt-md-5 pb-md-5 no-gutter pt-4">
+    <div class="row  " id="tvMainDetail">
+       <div class="col-12 col-md-5 col-lg-3 pl-md-5 text-center poster_wrapper">
+          <img class="rounded img-thumbnail" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{tv.poster_path}}" alt="">
+       </div>
+       <div class="col-md-7 col-lg-8 pt-3 pt-md-1 ml-xl-5 px-4">
+           <h4 class="font-weight-bold text-center text-md-left">{{tv.name}}({{tv.first_air_date.substr(0,4)}})</h4>
+           <div class="row">
+               <div class="col-lg-4 pt-2"><i class="fa fa-share-square-o px-2 "></i> {{tv.first_air_date}} ({{tv.original_language}})</div>
+               <div class="col-lg-3  pt-2"><i class="fa fa-clock-o px-2 "></i>{{tv.runtime}} min</div>
+               <div class="col-lg-5 pt-2">
+                  <i class="fa fa-film px-2 "></i>
+                  <span *ngFor="let g of tv.genres;last as l;">
+                  {{g.name}}{{l?"":","}}
+               </span></div>
+               
+              
+           </div>
+           <div class="row py-2">
+               <div class="col-12 col-lg-3 py-2  "><i class="fa fa-thumbs-o-up px-2"></i>User Score:{{tv.vote_average}}</div>
+               <div class="col-2 col-lg-1 offset-col-lg-1  py-2"> <button type="button" class="btn btn-dark btn-circle text-light">
+                  <i class="fa fa-list-alt fa-2x"></i>
+              </button></div>
+               <div class="col-2 col-lg-1 py-2 "><button type="button" class="btn btn-dark btn-circle text-light">
+                  <i class="fa fa-heart-o fa-2x"></i>
+              </button></div>
+              <div class="col-2 col-lg-1 py-2 "> 
+                  <button type="button" class="btn btn-dark btn-circle text-light">
+                  <i class="fa fa-bookmark-o fa-2x"></i>
+                  </button></div>
+              <div class="col-2 col-lg-1 offset-col-lg-1 py-2  "> 
+                   <button type="button" class="btn btn-dark btn-circle text-light">
+                  <i class="fa fa-star-o fa-2x"></i>
+                  </button>
+              </div>
+               <div class="col-4 col-lg-3 offset-lg-1 py-2" >
+                   <a class="cursor-pointer">
+                      <span (click)="onPopupVideo(trailer)" data-link="https://www.youtube.com/embed/SUXWAEX2jlg" data-toggle="modal" data-target="#popupTrailer">
+                          <i class="fa fa-play fa-2s"></i> &nbsp; Play Trailer</span>
+                   </a>
+                  
+              </div>
+             
+              
+           </div>
+           <div class="font-italic pt-2 text-info ">
+               {{tv.tagline}}
+           </div>
+           <div class="pt-3">
+               <h4>Overview</h4>
+               {{tv.overview}}
+           </div>
+          
+       </div>
+   </div>
+      <div class="row pt-4" id="tvContent">
+       <div class="col-md-8" id="tvContentLeft">
+           <div  id="tvCast"> 
+              <div class="row">
+  
+                  <div class="col-9">
+                     <h3>Top Billed Cast</h3>
+                  </div>
+                  <div class="col-3 text-right cursor-pointer">
+                     <span class="text-right " (click)="showCast()">more</span>
+                  </div>
+                 
+              </div>
+              <div id="castList">
+                  <div class="row">
+                      <div class="col-4 col-md-4 col-lg-2 pt-2" *ngFor="let cast of castes.slice(0,6)">
+                          <div class="card"  (click)="onSelectByActor(cast)" >
+                          
+                                  <img  class="cursor-pointer card-img-top " src="{{cast.profile_path?'https://image.tmdb.org/t/p/w138_and_h175_face/'+cast.profile_path:'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt="...">
+                       
+                              <div class="card-body px-1 text-center d-none d-md-block">
+                                  <h6 class="font-smaller">{{cast.name}}</h6>
+                                <p class="card-text font-smaller"><small>{{cast.character}}</small></p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                 
+              </div>
+           </div>
+          
+          
+          
+          <hr>
+          
+          <div id="movieMedia">
+              <div class="row">
+  
+                  <div class=" col-lg-2">
+                     <h3>Media</h3>
+                    
+                     
+                  </div>
+                  <div class="col-10 col-lg-8 text-left text-lg-right">
+                      <ul class="h-list px-0">
+                      <!-- <li class="" dir="auto"><a id="popular" class="media_panel" href="#">Most Popular</a></li> -->
+                      <li dir="auto"><a id="videos" class="media_panel" href="#">Videos <span>3</span></a></li>
+                      <li dir="auto" class="active"><a id="backdrops" class="media_panel" href="#">Backdrops <span>20</span></a></li>
+                      <li dir="auto" class=""><a id="posters" class="media_panel" href="#">Posters <span>76</span></a></li>
+                      <!-- <li class="view_all"><a href="/movie/24428-the-avengers/images/backdrops?language=en-US">View All Backdrops</a></li> -->
+                    </ul></div>
+                  <div class="col-2 col-lg-2 text-right">
+                     <span class="text-right" >more</span>
+                  </div>
+                 
+              </div>
+              <div class="h-scrolling">
+                  <div class="video-thumbnail mx-1"  *ngFor="let video of videos" (click)="onPopupVideo(video)" data-toggle="modal" data-target="#popupTrailer">
+                      <img  src="{{video.poster_path}}" alt="Video thumbnail" />
+                  </div>
+              </div>
+  
+              
+          </div>
+  
+          <hr>
+          <div id="movieRecommend">
+              <div class="row">
+  
+                  <div class="col-9">
+                     <h3>Recommendations</h3>
+                  </div>
+                  <div class="col-3 text-right">
+                     <span class="text-right" (click)="showRecommend()">more</span>
+                  </div>
+                 
+              </div>
+              <div id="recommendList">
+                  <div  class="h-scrolling">
+                      <div class="col-6 col-lg-4 d-inline-block mx-1" *ngFor="let recom of recommend.slice(0,10)">
+                          <div  >             
+                              <a routerLink="/movies/{{recom.id}}">
+                                  <img class="img-thumbnail rounded" src="{{recom.backdrop_path?'https://image.tmdb.org/t/p/w250_and_h141_face/'+recom.backdrop_path:'https://drive.google.com/uc?id=1e6FRD5GlhiqOmaJpnahyfsTZLe88pSXm'}}" alt="{{recom.name}}" >
+                              </a>
+                              <div class="px-1 text-center ">
+                                  <h6 class="font-smaller"><small>{{recom.name}}</small></h6>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div> 
+                      <router-outlet></router-outlet>
+  
+                  </div>
+                 
+              </div>
+  
+          
+            
+       </div>
+       </div>
+       <div class="col-md-4" id="movieContentRight">
+           <h4><a href="{{tv.homepage}}"><i class="fa fa-home"></i></a></h4>
+           <div>
+              <div class="row">
+                  <div class="col-2 col-md-12">
+                      <strong>Status</strong>
+                   </div>
+                  <div class="col-10 col-md-12 text-left">
+                      {{tv.status}}
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-2 col-md-12">
+                      <strong>  Original Language</strong>
+                   </div>
+                  <div class="col-10 col-md-12 text-left">       
+                      {{tv.original_language}}
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-2 col-md-12">
+                      <strong> Type</strong>
+                   </div>
+                  <div class="col-10 col-md-12 text-left">
+                      {{tv.type}}
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-2 col-md-12">
+                      <strong> Original Language</strong>
+                   </div>
+                  <div class="col-10 col-md-12 text-left">
+                      {{tv.original_language}}
+                  </div>
+               </div>
+           </div>
+           <div id="movieKeyword" class="py-4" >
+               <h5 class="font-weight-bold">Keywords</h5>
+              <span class="badge badge-secondary mx-1" *ngFor="let keyword of keywords">{{keyword.name}}</span>
+           </div>
+          
+          
+       </div>
+  
+      </div>
+  </div>
+  <!-- <div class="page">
+      <p><a href="#media-popup"  (click)="onPopup(url)"data-media="//www.youtube.com/embed/YoXa2Pl7Hk0">click me</a></p>
+      
+      <div class="popup" id="media-popup">
+          <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+      </div>
+  </div> -->
+  
+  
+  <!-- youtube link -->
+  <!-- <a   (click)="onPopupTrailer($event)" data-link="http://www.youtube.com/embed/SUXWAEX2jlg" data-title="How to install SASS">trailer</a>
+  <br>
+  <a class="popup"  data-link="https://www.youtube.com/watch?v=SUXWAEX2jlg" data-title="How to install Node.js">Node.js</a>
+  
+      <div class="class-video">
+          <iframe src="https://www.youtube.com/embed/hA6hldpSTF8" id="modalFrame" style="width: 100%; height: 300px;">
+          </iframe>
+      </div> -->
+  
+  
+  
+  <!-- bootstrap modal -->
+  <!-- <button type="button" (click)="onPopup($event)" data-link="http://www.youtube.com/embed/SUXWAEX2jlg"  class="btn btn-primary" data-toggle="modal" data-target="#popupTrailer">
+      Launch demo modal
+    </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade " id="popupTrailer" tabindex="-1" role="dialog" aria-labelledby="popupTrailerModalLabel" aria-hidden="true">
+      <div class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header  px-0 py-0">
+            <h5 class="modal-title px-2 " id="popupTrailerModalLabel">Trailer</h5>
+            <button type="button" class="close" (click)="closeModal($event)" data-dismiss="modal" aria-label="Close">
+              <span class="pr-2" aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body px-0 py-0 text-center" id="video-view">
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
