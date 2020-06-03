@@ -58,10 +58,10 @@ export class HomeComponent implements OnInit {
         this.homeService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results,
           console.log(this.tvs)},
           error=>this.errorMsg=error);
-      this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts=>{
-        this.posts=posts;
-        //console.log(this.posts)
-      }) 
+      // this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts=>{
+      //   this.posts=posts;
+      //   //console.log(this.posts)
+      // }) 
      // this.dataSource.sort = this.sort;
        
       
