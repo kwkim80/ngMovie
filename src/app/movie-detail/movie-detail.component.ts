@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import {MoviesService} from '../movies.service';
-
 import {Router, ParamMap, ActivatedRoute} from '@angular/router';
-
 import * as $ from 'jquery' 
-import { IWrapper } from '../wrapper';
 import { QueryService } from '../query.service';
 import { Iitem } from '../item';
 

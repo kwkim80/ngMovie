@@ -14,12 +14,12 @@
             <a routerLink="/tv/{{item.id}}">
                 <img src="{{item.poster_path?'https://image.tmdb.org/t/p/w220_and_h330_face/'+item.poster_path:'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg'}}" class="card-img-top" alt="{{item.name}}_NoImg">
             </a> 
-            <div class=" content text-center px-1  py-2  ">
+            <div class=" content text-center px-1 py-2 cursor-pointer" routerLink="/tv/{{item.id}}">
                 <div class="consensus  ">
                     <span class="btn btn-dark btn-sm rounded-circle p-1 border">73%</span>
                       
                 </div>
-                <h6 class="font-smaller pt-2 "><small class="breakDiv">{{item.name.split(" ").slice(0,4).join(" ")}}</small></h6>
+                <h6 class="font-smaller pt-2 ">{{item.name.split(" ").length>4?item.name.split(" ").slice(0,4).join(" ")+"...":item.name}}</h6>
             </div>
         </div>
         </div>

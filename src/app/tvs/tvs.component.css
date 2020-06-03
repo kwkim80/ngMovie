@@ -38,3 +38,7 @@ div.content div.consensus {
     top: -15px;
     right: 5px;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}
