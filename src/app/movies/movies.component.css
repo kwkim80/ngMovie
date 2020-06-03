@@ -24,3 +24,8 @@
 .cursor-pointer{
     cursor: pointer;
 }
+
+.pageActive{
+   background-color: #e1e1e1;
+   color: royalblue;
+}

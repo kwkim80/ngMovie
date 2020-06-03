@@ -3,7 +3,7 @@
   <div class=" pb-md-3 text-right">
       <form class="form-inline-block my-2 my-lg-0 " (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
           <!-- <input [(ngModel)]="keyword" class="form-control mr-sm-2" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search"> -->
-          <input ngModel class="form-control mr-2 d-inline-block input-with-auto "  name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search">
+          <input  [(ngModel)]="keyword" class="form-control mr-2 d-inline-block input-with-auto "  name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search">
           <button  class="btn btn-success my-2 my-sm-0 " type="submit">Search</button>
         </form>
   </div>
@@ -42,7 +42,7 @@
         </li>
 
         <li class="page-item " *ngFor="let num of numbers;index as i;">
-            <a class="page-link p-2 px-md-3" (click)="onPage(num+1)">{{num+1}}</a></li>
+            <a class="page-link p-2 px-md-3" [class.pageActive]="pageNum==(num+1)" (click)="onPage(num+1)">{{num+1}}</a></li>
 
        
        

@@ -53,7 +53,7 @@
         </li>
 
         <li class="page-item " *ngFor="let num of numbers;index as i;">
-            <a class="page-link p-2 px-md-3" (click)="onPage(num+1)">{{num+1}}</a></li>
+            <a class="page-link p-2 px-md-3" [class.pageActive]="pageNum==(num+1)" (click)="onPage(num+1)">{{num+1}}</a></li>
 
        
        

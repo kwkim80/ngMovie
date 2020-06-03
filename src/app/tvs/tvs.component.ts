@@ -16,7 +16,7 @@ export class TvsComponent implements OnInit {
   private data;
   public errorMsg;
   public keyword;
-  public pageNum="1";
+  public pageNum=1;
   public totalPage=1;
   public numbers:number[];
   public pageSet=0;
@@ -50,7 +50,9 @@ export class TvsComponent implements OnInit {
     this.queryService.getSearch('tv',form.value.keyword,"1").subscribe(data=>{this.data=data;
       this.tvs=this.data.results;
       this.totalPage=this.data.total_pages;
-      this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>i);},
+      this.pageSet=0;
+      this.pageNum=1;
+      this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
       error=>this.errorMsg=error);
   }
 
@@ -61,10 +63,10 @@ export class TvsComponent implements OnInit {
     //   error=>this.errorMsg=error);
     this.queryService.getData('tv/popular',page).subscribe(data=>{this.data=data;
       this.tvs=this.data.results;
-      
-     this.totalPage=this.data.total_pages;
-     this.pageSet=Math.floor((page-1)/10);
-     this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
+      this.totalPage=this.data.total_pages;
+      this.pageSet=Math.floor((page-1)/10);
+      this.pageNum=page;
+      this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
       error=>this.errorMsg=error);
   }
 
@@ -72,10 +74,11 @@ export class TvsComponent implements OnInit {
     console.log("search:"+this.keyword+":"+page);
     this.keyword=keyword;
     this.queryService.getSearch('tv',keyword,page).subscribe(data=>{this.data=data;
-      this.tvs=this.data.results;
-     this.totalPage=this.data.total_pages;
-     this.pageSet=Math.floor((page-1)/10);
-     this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
+    this.tvs=this.data.results;
+    this.totalPage=this.data.total_pages;
+    this.pageSet=Math.floor((page-1)/10);
+    this.pageNum=page;
+    this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
       error=>this.errorMsg=error);
   }
 

@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit {
   private data;
   public errorMsg;
   public keyword;
-  public pageNum="1";
+  public pageNum=1;
   public totalPage=1;
   public numbers:number[];
   public pageSet=0;
@@ -34,17 +34,22 @@ export class MoviesComponent implements OnInit {
       this.queryService.getSearch('movie',this.keyword?this.keyword:"Avengers", this.pageNum).subscribe(data=>{this.data=data;
          this.movies=this.data.results;
          this.totalPage=this.data.total_pages;
-         this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>i);},
+         console.log(this.totalPage);
+         this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
          error=>this.errorMsg=error);
     
   }
 
   onSubmit(form:NgForm){
-    this.keyword=form.value.keyword
+    
     console.log(this.keyword);
 
     this.queryService.getSearch('movie',form.value.keyword,"1").subscribe(data=>{this.data=data;
-      this.movies=this.data.results;},
+      this.movies=this.data.results;
+      this.totalPage=this.data.total_pages;
+      this.pageSet=0;
+      this.pageNum=1;
+      this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
       error=>this.errorMsg=error);
   }
 
@@ -54,6 +59,7 @@ export class MoviesComponent implements OnInit {
       this.movies=this.data.results;
       this.totalPage=this.data.total_pages;
       this.pageSet=Math.floor((page-1)/10);
+      this.pageNum=page;
       this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
       error=>this.errorMsg=error);
   }

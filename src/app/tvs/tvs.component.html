@@ -35,7 +35,7 @@
               </li>
       
               <li class="page-item" *ngFor="let num of numbers; ">
-                  <a class="page-link p-2  px-md-3" (click)="onPageSearch(keyword,num+1)">{{num+1}}</a></li>
+                  <a class="page-link p-2  px-md-3" [class.pageActive]="pageNum==(num+1)" (click)="onPageSearch(keyword,num+1)">{{num+1}}</a></li>
              
               <li class="page-item" [class.disabled]="this.totalPage<=((this.pageSet+1)*10)">
                 <a class="page-link p-2 px-md-3" (click)="onPageSearch(keyword,(pageSet+1)*10+1)">Next</a>
@@ -51,7 +51,7 @@
               </li>
       
               <li class="page-item" *ngFor="let num of numbers; ">
-                  <a class="page-link p-1 p-sm-2 px-md-3" (click)="onPage(num+1)">{{num+1}}</a></li>
+                  <a class="page-link p-1 p-sm-2 px-md-3"[class.pageActive]="pageNum==(num+1)" (click)="onPage(num+1)">{{num+1}}</a></li>
              
               <li class="page-item" [class.disabled]="this.totalPage<=((this.pageSet+1)*10)">
                 <a class="page-link p-1 p-sm-2 px-md-3" (click)="onPage((pageSet+1)*10+1)">Next</a>

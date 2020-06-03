@@ -19,7 +19,7 @@ export class ActorsComponent implements OnInit {
   public errorMsg;
   private actorIdName;
   public keyword;
-  public pageNum="1";
+  public pageNum=1;
   public totalPage=1;
   public numbers:number[];
   public pageSet=0;
@@ -68,7 +68,11 @@ export class ActorsComponent implements OnInit {
     //console.log(this.keyword);
 
     this.queryService.getSearch('person',form.value.keyword,"1").subscribe(data=>{this.data=data;
-      this.actors=this.data.results;},
+      this.actors=this.data.results;
+      this.totalPage=this.data.total_pages;
+      this.pageSet=0;
+      this.pageNum=1;
+      this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
       error=>this.errorMsg=error);
   }
 
@@ -77,7 +81,9 @@ export class ActorsComponent implements OnInit {
     this.queryService.getSearch('person',this.keyword?this.keyword:"a", page).subscribe(data=>{this.data=data;
       this.actors=this.data.results;
       this.totalPage=this.data.total_pages;
-      this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>i);},
+      this.pageSet=Math.floor((page-1)/10);
+      this.pageNum=page;
+      this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
       error=>this.errorMsg=error);
   }
 
