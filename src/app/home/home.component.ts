@@ -55,14 +55,11 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
       
-      this.queyService.getData('movie/popular',this.pageNum).subscribe(data=>{this.movies=data.results,
-      console.log(this.movies)},
+      this.queyService.getData('movie/popular',this.pageNum).subscribe(data=>{this.movies=data.results},
         error=>this.errorMsg=error);
-        this.queyService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results,
-          console.log(this.tvs)},
-          error=>this.errorMsg=error);
-          this.queyService.getData('movie/top_rated',this.pageNum).subscribe(data=>{this.tops=data.results,
-            console.log(this.tops)},
+      this.queyService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results},
+        error=>this.errorMsg=error);
+      this.queyService.getData('movie/top_rated',this.pageNum).subscribe(data=>{this.tops=data.results},
             error=>this.errorMsg=error);
      
       
