@@ -38,16 +38,16 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <li class="page-item " [class.disabled]="pageSet === 0" >
-          <a class="page-link  p-2 px-md-3" (click)="onPage((pageSet-1)*10+1)">Previous</a>
+          <a class="page-link  p-1 p-sm-2 px-md-3" (click)="onPage((pageSet-1)*10+1)">Previous</a>
         </li>
 
         <li class="page-item " *ngFor="let num of numbers;index as i;">
-            <a class="page-link p-2 px-md-3" [class.pageActive]="pageNum==(num+1)" (click)="onPage(num+1)">{{num+1}}</a></li>
+            <a class="page-link p-1 p-sm-2 px-md-3" [class.pageActive]="pageNum==(num+1)" (click)="onPage(num+1)">{{num+1}}</a></li>
 
        
        
         <li class="page-item" [class.disabled]="this.totalPage<=((this.pageSet+1)*10)">
-          <a class="page-link  p-2 px-md-3" (click)="onPage((pageSet+1)*10+1)">Next</a>
+          <a class="page-link  p-1 p-sm-2 px-md-3" (click)="onPage((pageSet+1)*10+1)">Next</a>
         </li>
       </ul>
     </nav>
