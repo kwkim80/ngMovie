@@ -59,29 +59,36 @@ export class SearchResultComponent implements OnInit {
   
 
   onPageM(pageM){
-    console.log(pageM);
-   // this.router.navigate([,actor.id]);
-   this.pageM=pageM;
-   this.queryService.getSearch('movie',this.keyword,pageM).subscribe(data=>{this.data=data;
-    this.movieResultCnt=this.data.total_results;
-    this.movies=this.data.results;},
-    error=>this.errorMsg=error);
+    if(pageM>=1 && pageM <=this.movieTotalPage){
+      this.pageM=pageM;
+      this.queryService.getSearch('movie',this.keyword,pageM).subscribe(data=>{this.data=data;
+       this.movieResultCnt=this.data.total_results;
+       this.movies=this.data.results;},
+       error=>this.errorMsg=error);
+    }
+  
   }
 
   onPageT(pageT){
-    this.pageT=pageT;
-    this.queryService.getSearch('tv',this.keyword,pageT).subscribe(data=>{this.data=data;
-      this.tvResultCnt=this.data.total_results;
-      this.tvs=this.data.results;},
-      error=>this.errorMsg=error);
+    if(pageT>=1 && pageT <=this.tvTotalPage){
+      this.pageT=pageT;
+      this.queryService.getSearch('tv',this.keyword,pageT).subscribe(data=>{this.data=data;
+        this.tvResultCnt=this.data.total_results;
+        this.tvs=this.data.results;},
+        error=>this.errorMsg=error);
+    }
+   
   }
 
   onPageP(pageP){
-    this.pageP=pageP;
-    this.queryService.getSearch('person',this.keyword,pageP).subscribe(data=>{this.data=data;
-      this.peopleResultCnt=this.data.total_results;
-            this.people=this.data.results;},
-            error=>this.errorMsg=error);
+    if(pageP>=1 && pageP <=this.peopleTotalPage){
+      this.pageP=pageP;
+      this.queryService.getSearch('person',this.keyword,pageP).subscribe(data=>{this.data=data;
+        this.peopleResultCnt=this.data.total_results;
+              this.people=this.data.results;},
+              error=>this.errorMsg=error);
+    }
+   
    
   }
 
