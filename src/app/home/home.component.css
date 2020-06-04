@@ -101,10 +101,10 @@ div.content div.consensus {
   }
 
  .trendingDiv{
-     background: url('https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg') no-repeat;
-     background-position: 50% 200px;
+     background: url('https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg') center bottom no-repeat;
+     /* background-position: 50% 200px; */
      background-size: 1300px;
-     padding-bottom: 10px;
+     padding-bottom: 5px;
  
  }
  .font-smaller{
