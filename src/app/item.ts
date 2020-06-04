@@ -38,6 +38,7 @@ export interface Iitem{
       "homepage":string,
       "status": string,
       "first_air_date":string,
+      "media_type":string,
 
       birthday:string,
       deathday:string,

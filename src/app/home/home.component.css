@@ -54,3 +54,50 @@
 .cursor-pointer{
     cursor: pointer;
 }
+
+
+div.content {
+    /* width: 100%; */
+  
+    position: relative;
+    /* padding: 26px 10px 12px 10px;
+    white-space: normal;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap; */
+}
+
+div.content div.consensus {
+    position: absolute;
+    top: -15px;
+    right: 5px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.pageActive{
+    background-color: #e1e1e1;
+    color: royalblue;
+ }
+
+ .h-scrolling {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+  }
+
+  .breakDiv {
+    white-space:normal !important;
+  
+  }
+
+ .trendingDiv{
+     background: url('https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg') no-repeat;
+     background-position: 50% 200px;
+     background-size: 1300px;
+     padding-bottom: 10px;
+ 
+ }

@@ -28,6 +28,14 @@ export class QueryService {
 
   constructor(private http:HttpClient) { }
 
+  getInfo(subUrl){
+    this.url = "".concat(this.baseURL, subUrl,'?api_key=',this.APIKEY,'&language=en-US'); 
+    return this.http.get<IWrapper>(this.url).pipe(
+      retry(1), catchError(error=>{
+        return throwError(error.message||"Server Error");
+      }));
+  }
+
   getData(subUrl,pageNum){
     this.url = "".concat(this.baseURL, subUrl,'?api_key=',this.APIKEY,'&language=en-US&page=',pageNum); 
     return this.http.get<IWrapper>(this.url).pipe(
