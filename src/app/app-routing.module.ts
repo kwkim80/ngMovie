@@ -10,6 +10,7 @@ import { MovieCastComponent } from './movie-cast/movie-cast.component';
 import { MovieRecommendComponent } from './movie-recommend/movie-recommend.component';
 import { TvsComponent } from './tvs/tvs.component';
 import { TvDetailComponent } from './tv-detail/tv-detail.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes: Routes = [
   {path:"", redirectTo:'/home', pathMatch:'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:"actors/:id", component:ActorDetailComponent},
   {path:"tv", component:TvsComponent},
   {path:"tv/:id", component:TvDetailComponent},
+  {path:"search/:id", component:SearchResultComponent},
   {path:"**", component:PageNotComponent }
 
 ];
@@ -44,5 +46,6 @@ export const routingComponents=[
   MovieRecommendComponent,
   TvsComponent,
   TvDetailComponent,
+  SearchResultComponent,
   PageNotComponent
 ]
