@@ -20,8 +20,14 @@
 }
 
 .w-70-100-50{
-    max-width: 70%;
+    max-width: 100%;
     height: auto;
+}
+@media (min-width: 576px) { 
+    .w-70-100-50{
+        max-width: 60%;
+        height: auto;
+    }
 }
 @media (min-width:768px) { 
     .w-70-100-50{

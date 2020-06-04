@@ -39,7 +39,7 @@
         <div class="text-right"><small class="display-6 text-uppercase mr-1  ">Movie</small><i class="fa fa-film"></i></div>
         <div class="row my-2 rounded popularItem" *ngFor="let movie of movies.slice(0,5)" routerLink="/movies/{{movie.id}}">
           <div class="col-3 px-4">
-            <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class=" py-1 w-70-100-50" alt="{{movie.title}}">
+            <img  src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class="w-70-100-50 py-1" alt="{{movie.title}}">
           </div>
           <div class="col-9 row">
             <div class="col-12 mt-sm-3 my-md-0 ">{{movie.title}}</div>
