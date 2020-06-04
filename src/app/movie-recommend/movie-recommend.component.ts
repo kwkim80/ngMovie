@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MoviesService} from '../movies.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { IMovieSub } from '../movieSub';
 import { QueryService } from '../query.service';
+import { Iitem } from '../item';
+
 
 
 @Component({
@@ -11,14 +13,28 @@ import { QueryService } from '../query.service';
   styleUrls: ['./movie-recommend.component.css']
 })
 export class MovieRecommendComponent implements OnInit {
+  
 public movieId;
 public errorMsg;
 public recommend2:IMovieSub[];
 
-public childID = "";
-public id = "";
-public isLoading = true;
-public timer = null;
+
+@Input() mId: number;
+@Input() recommend: Iitem[];
+    @Input() stock: number;
+    @Input() productId: number;
+    @Output() stockValueChange = new EventEmitter();
+
+
+
+    updatedstockvalue: number;
+
+    stockValueChanged() {
+
+        this.stockValueChange.emit({ id: this.productId, updatdstockvalue: this.updatedstockvalue });
+        this.updatedstockvalue = null;
+
+    }
 
 
   constructor(private queryService:QueryService,private route:ActivatedRoute ) {
@@ -31,20 +47,7 @@ public timer = null;
    }
 
   ngOnInit(): void {
-  //   console.log(this.route.firstChild.snapshot.params['id']);
-  //  this.route.queryParams.subscribe(params => {
-  //     this.movieId = params['id'];
-  //     console.log(this.movieId);
-  //     this.movieId= this.route.snapshot.paramMap.get('id');
-  //     console.log(this.movieId);
-  //   });
-    // this.route.params.subscribe((param:ParamMap)=>{
-    //   this.movieId=parseInt(param.get('id'));
-    //   console.log(this.movieId+":"+param['id'])
-    //   // this.movieService.getMovieSub(this.movieId,"recommendations").subscribe(data=>{this.recommend2=data.results; console.log(this.movieId+"f")},
-    //   // error=>this.errorMsg=error);
-     
-    // });
+    
     
   }
 

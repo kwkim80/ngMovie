@@ -28,16 +28,16 @@ export class QueryService {
 
   constructor(private http:HttpClient) { }
 
-  getInfo(subUrl){
-    this.url = "".concat(this.baseURL, subUrl,'?api_key=',this.APIKEY,'&language=en-US'); 
+  getInfo(itemName){
+    this.url = "".concat(this.baseURL, itemName,'?api_key=',this.APIKEY,'&language=en-US'); 
     return this.http.get<IWrapper>(this.url).pipe(
       retry(1), catchError(error=>{
         return throwError(error.message||"Server Error");
       }));
   }
 
-  getData(subUrl,pageNum){
-    this.url = "".concat(this.baseURL, subUrl,'?api_key=',this.APIKEY,'&language=en-US&page=',pageNum); 
+  getData(itemName,pageNum){
+    this.url = "".concat(this.baseURL, itemName,'?api_key=',this.APIKEY,'&language=en-US&page=',pageNum); 
     return this.http.get<IWrapper>(this.url).pipe(
       retry(1), catchError(error=>{
         return throwError(error.message||"Server Error");
@@ -45,8 +45,8 @@ export class QueryService {
   }
 
   
-  getSearch(subCate, keyword, pageNum):Observable<IWrapper>{
-    this.url = "".concat(this.baseURL, 'search/', subCate ,'?api_key=',this.APIKEY,'&language=en-US&query=',keyword,'&page=',pageNum); 
+  getSearch(itemName, keyword, pageNum):Observable<IWrapper>{
+    this.url = "".concat(this.baseURL, 'search/', itemName ,'?api_key=',this.APIKEY,'&language=en-US&query=',keyword,'&page=',pageNum); 
     return this.http.get<IWrapper>(this.url).pipe(
       retry(1), catchError(error=>{
         return throwError(error.message||"Server Error");
@@ -54,16 +54,26 @@ export class QueryService {
   }
 
 
-  getItem(subUrl,idx):Observable<Iitem>{
-    this.url="".concat(this.baseURL, subUrl,"/",idx,'?api_key=',this.APIKEY,'&language=en-US'); 
+  getItem(itemName,idx):Observable<Iitem>{
+    this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&language=en-US'); 
     return this.http.get<Iitem>(this.url).pipe(
      retry(1), catchError(error=>{
        return throwError(error.message||"Server Error");
      }));
   }
 
-  getItemSub(subUrl,idx,subCate):Observable<IWrapper>{
-    this.url="".concat(this.baseURL, subUrl,'/',idx,'/',subCate,'?api_key=',this.APIKEY,'&language=en-US'); 
+  getItemWithSub(itemName,idx,subItem:string[]):Observable<Iitem>{
+    this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&append_to_response=',subItem.join(',')); 
+    console.log(this.url);
+    return this.http.get<Iitem>(this.url).pipe(
+     retry(1), catchError(error=>{
+       return throwError(error.message||"Server Error");
+     }));
+  }
+
+
+  getItemSub(itemName,idx,subCate):Observable<IWrapper>{
+    this.url="".concat(this.baseURL, itemName,'/',idx,'/',subCate,'?api_key=',this.APIKEY,'&language=en-US'); 
 
     return this.http.get<IWrapper>(this.url).pipe(
       retry(1), catchError(error=>{

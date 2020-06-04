@@ -11,6 +11,7 @@ import {ActorsService} from './actors.service';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CastComponent } from './cast/cast.component';
 
 
 
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    CastComponent
   ],
   imports: [
     BrowserModule,

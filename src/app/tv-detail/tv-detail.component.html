@@ -4,10 +4,10 @@
           <img class="rounded img-thumbnail" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{tv.poster_path}}" alt="">
        </div>
        <div class="col-md-7 col-lg-8 pt-3 pt-md-1 ml-xl-5 px-4">
-           <h4 class="font-weight-bold text-center text-md-left">{{tv.name}}({{tv.first_air_date.substr(0,4)}})</h4>
+           <h4 class="font-weight-bold text-center text-md-left"><i class="fa fa-television"></i> {{tv.name}}({{tv.first_air_date.substr(0,4)}})</h4>
            <div class="row">
                <div class="col-lg-4 pt-2"><i class="fa fa-share-square-o px-2 "></i> {{tv.first_air_date}} ({{tv.original_language}})</div>
-               <div class="col-lg-3  pt-2"><i class="fa fa-clock-o px-2 "></i>{{tv.runtime}} min</div>
+               <div class="col-lg-3  pt-2"><i class="fa fa-clock-o px-2 "></i>{{tv.episode_run_time}} min</div>
                <div class="col-lg-5 pt-2">
                   <i class="fa fa-film px-2 "></i>
                   <span *ngFor="let g of tv.genres;last as l;">
@@ -56,7 +56,7 @@
       <div class="row pt-4" id="tvContent">
        <div class="col-md-8" id="tvContentLeft">
            <div  id="tvCast"> 
-              <div class="row">
+              <!-- <div class="row">
   
                   <div class="col-9">
                      <h3>Top Billed Cast</h3>
@@ -81,10 +81,11 @@
                       </div>
                   </div>
                  
-              </div>
-           </div>
+              </div> -->
+              <app-cast [itemId]="tv.id" [castes]="castes"></app-cast>
+            </div>
           
-          
+
           
           <hr>
           
@@ -134,7 +135,7 @@
                   <div  class="h-scrolling">
                       <div class="col-6 col-lg-4 d-inline-block mx-1" *ngFor="let recom of recommend.slice(0,10)">
                           <div  >             
-                              <a routerLink="/movies/{{recom.id}}">
+                              <a routerLink="/tv/{{recom.id}}">
                                   <img class="img-thumbnail rounded" src="{{recom.backdrop_path?'https://image.tmdb.org/t/p/w250_and_h141_face/'+recom.backdrop_path:'https://drive.google.com/uc?id=1e6FRD5GlhiqOmaJpnahyfsTZLe88pSXm'}}" alt="{{recom.name}}" >
                               </a>
                               <div class="px-1 text-center ">
@@ -157,7 +158,7 @@
        <div class="col-md-4" id="movieContentRight">
            <h4><a href="{{tv.homepage}}"><i class="fa fa-home"></i></a></h4>
            <div>
-              <div class="row">
+              <div class="row py-2">
                   <div class="col-2 col-md-12">
                       <strong>Status</strong>
                    </div>
@@ -165,15 +166,15 @@
                       {{tv.status}}
                   </div>
                </div>
-               <div class="row">
+               <div class="row py-2">
                   <div class="col-2 col-md-12">
-                      <strong>  Original Language</strong>
+                      <strong> Network</strong>
                    </div>
                   <div class="col-10 col-md-12 text-left">       
-                      {{tv.original_language}}
+                     <img src="https://image.tmdb.org/t/p/h30/{{network.logo_path}}" alt=""> 
                   </div>
                </div>
-               <div class="row">
+               <div class="row py-2">
                   <div class="col-2 col-md-12">
                       <strong> Type</strong>
                    </div>
@@ -181,7 +182,7 @@
                       {{tv.type}}
                   </div>
                </div>
-               <div class="row">
+               <div class="row py-2">
                   <div class="col-2 col-md-12">
                       <strong> Original Language</strong>
                    </div>
@@ -192,7 +193,7 @@
            </div>
            <div id="movieKeyword" class="py-4" >
                <h5 class="font-weight-bold">Keywords</h5>
-              <span class="badge badge-secondary mx-1" *ngFor="let keyword of keywords">{{keyword.name}}</span>
+              <span class="badge badge-secondary mx-1 cursor-pointer"  routerLink="/search/{{keyword.name}}"  *ngFor="let keyword of keywords">{{keyword.name}}</span>
            </div>
           
           

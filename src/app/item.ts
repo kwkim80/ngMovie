@@ -1,3 +1,5 @@
+import { IWrapper } from './wrapper';
+
 export interface Iitem{
     "cast_id":number,
     "character": string,
@@ -39,7 +41,15 @@ export interface Iitem{
       "status": string,
       "first_air_date":string,
       "media_type":string,
-
+      "episode_run_time":string,
+      "networks":[],
+      "logo_path":string,
+      "credits":IWrapper,
+      "images":IWrapper,
+      "videos":IWrapper,
+      "recommendations":IWrapper,
+      "keywords":IWrapper,
+      "results":[],
       birthday:string,
       deathday:string,
       known_for:[],

@@ -14,13 +14,13 @@ export class MovieDetailComponent implements OnInit {
   public movieId;
   public movie:Iitem;
   public errorMsg;
-  public castes:Iitem[];
+  public castes:Iitem[]=null;
   public data;
-  public backdrops:Iitem[];
-  public posters:Iitem[];
-  public recommend:Iitem[];
-  public keywords:Iitem[];
-  public videos:Iitem[];
+  public backdrops:Iitem[]=null;
+  public posters:Iitem[]=null;
+  public recommend:Iitem[]=null;
+  public keywords:Iitem[]=null;
+  public videos:Iitem[]=null;
   public trailer:Iitem;
 
   constructor(private router:Router, private route:ActivatedRoute,  private queryService:QueryService ) { }
@@ -37,21 +37,33 @@ export class MovieDetailComponent implements OnInit {
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.movieId=parseInt(param.get('id'));
    // console.log(this.movieId);
-      this.queryService.getItem('movie',this.movieId).subscribe(data=>this.movie=data,
-        error=>this.errorMsg=error);
-
-        //casting people
-      this.queryService.getItemSub('movie',this.movieId,'credits').subscribe(data=>{this.castes=data.cast},
-        error=>this.errorMsg=error);
-      this.queryService.getItemSub('movie',this.movieId,"videos").subscribe(data=>{this.videos=data.results;
-        this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
-        this.trailer=this.videos.find(r=>r.type=="Trailer");});
-      this.queryService.getItemSub('movie',this.movieId,'images').subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
-        error=>this.errorMsg=error);
-      this.queryService.getItemSub('movie',this.movieId,"recommendations").subscribe(data=>{this.recommend=data.results;},
-        error=>this.errorMsg=error);
-        this.queryService.getItemSub('movie',this.movieId,"keywords").subscribe(data=>this.keywords=data.keywords,
+    
+        this.queryService.getItemWithSub('movie',this.movieId,['credits','videos','images','recommendations','keywords']).subscribe(data=>{
+          this.movie=data;  
+          this.videos=this.movie.videos.results;
+          this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
+          this.trailer=this.videos.find(r=>r.type=="Trailer");
+          this.castes=this.movie.credits.cast; 
+          this.backdrops=this.movie.images.backdrops; 
+          this.posters=this.movie.images.posters;
+          this.recommend=this.movie.recommendations.results;
+          this.keywords=this.movie.keywords.keywords;
+         },
           error=>this.errorMsg=error);
+        //casting people
+      //   this.queryService.getItem('movie',this.movieId).subscribe(data=>this.movie=data,
+      //     error=>this.errorMsg=error);
+      // this.queryService.getItemSub('movie',this.movieId,'credits').subscribe(data=>{this.castes=data.cast; console.log(this.castes)},
+      //   error=>this.errorMsg=error);
+      // this.queryService.getItemSub('movie',this.movieId,"videos").subscribe(data=>{this.videos=data.results;
+      //   this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
+      //   this.trailer=this.videos.find(r=>r.type=="Trailer");});
+      // this.queryService.getItemSub('movie',this.movieId,'images').subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
+      //   error=>this.errorMsg=error);
+      // this.queryService.getItemSub('movie',this.movieId,"recommendations").subscribe(data=>{this.recommend=data.results;},
+      //   error=>this.errorMsg=error);
+      //   this.queryService.getItemSub('movie',this.movieId,"keywords").subscribe(data=>this.keywords=data.keywords,
+      //     error=>this.errorMsg=error);
     });
 
     

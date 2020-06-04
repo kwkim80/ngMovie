@@ -1,0 +1,28 @@
+<div  id="castingContent"> 
+    <div class="row">
+
+        <div class="col-9">
+           <h3>Top Billed Cast</h3>
+        </div>
+        <div class="col-3 text-right cursor-pointer">
+           <span class="text-right " (click)="showCast()">more</span>
+        </div>
+       
+    </div>
+    <div id="castList">
+        <div class="row">
+            <div class="col-4 col-md-4 col-lg-2 pt-2" *ngFor="let cast of castes.slice(0,6)">
+                <div class="card"  (click)="onSelectByActor(cast)" >
+                
+                        <img  class="cursor-pointer card-img-top " src="{{cast.profile_path?'https://image.tmdb.org/t/p/w138_and_h175_face/'+cast.profile_path:'https://drive.google.com/uc?id=13x9PHVZWm1KH0Wg_lsOFVyVj7__k88pi'}}"   alt="...">
+             
+                    <div class="card-body px-1 text-center d-none d-md-block">
+                        <h6 class="font-smaller">{{cast.name}}</h6>
+                      <p class="card-text font-smaller"><small>{{cast.character}}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+ </div>

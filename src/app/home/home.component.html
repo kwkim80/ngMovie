@@ -4,7 +4,7 @@
         <div class="row text-center" >
           <div class="col-10 offset-1 col-lg-6 offset-lg-3 text-center pt-2 py-sm-4 rounded" id="maintitleBox">
             <h4 >Welcome to The Movie Data Base</h4>
-            <div class="px-lg-5" >This site is made for my portfolio and it is used by <strong class="text-primary">Angular Js</strong>.
+            <div class="px-lg-5 h-5" >This site is made for my portfolio and it is used by <strong class="text-primary">Angular Js</strong>.
                The data is from at https://www.themoviedb.org</div>
            
               <form action="" class="form-inline   justify-content-center pt-3">
@@ -80,7 +80,7 @@
         <div id="actorMovieList" class="h-scrolling">
          
                 
-                    <div class="col-3 col-lg-2 d-inline-block px-1 px-md-2"  *ngFor="let item of trends">
+                    <div class="col-3 col-lg-2 d-inline-block px-1 px-md-3"  *ngFor="let item of trends">
                       <div class="h-scrolling " *ngIf="item.media_type==='movie'; then thenBlock; else elseBlock;"></div> 
                        <ng-template #thenBlock>
                         <div class="card border-light border-bottom-0" >
@@ -143,9 +143,9 @@
                     <a routerLink="/movies/{{movie.id}}">
                         <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
                     </a> 
-                    <div class="card-block p-2">
-                      <h6 class="card-title">{{movie.title}}</h6>
-                      <p class="card-text d-none d-md-block">{{movie.overview.slice(0,80)}}...</p>
+                    <div class="card-block p-2 text-center">
+                      <h6 class="card-title "><small class="font-weight-bold">{{movie.title}}</small> </h6>
+                      <p class="card-text d-none d-md-block"><small>{{movie.overview.slice(0,80)}}...</small></p>
                   </div>
                 </div>
             </div>

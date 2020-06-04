@@ -22,6 +22,7 @@ export class TvDetailComponent implements OnInit {
   public keywords:Iitem[];
   public videos:Iitem[];
   public trailer:Iitem;
+  public network:Iitem;
 
   constructor(private router:Router, private route:ActivatedRoute,  private queryService:QueryService ) { }
 
@@ -37,11 +38,11 @@ export class TvDetailComponent implements OnInit {
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.tvId=parseInt(param.get('id'));
    // console.log(this.tvId);
-      this.queryService.getItem('tv',this.tvId).subscribe(data=>{this.tv=data;console.log(this.tv)},
+      this.queryService.getItem('tv',this.tvId).subscribe(data=>{this.tv=data;this.network=this.tv.networks.pop()},
         error=>this.errorMsg=error);
 
         //casting people
-      this.queryService.getItemSub('tv',this.tvId,'credits').subscribe(data=>{this.castes=data.cast},
+      this.queryService.getItemSub('tv',this.tvId,'credits').subscribe(data=>{this.castes=data.cast; console.log(this.castes);},
         error=>this.errorMsg=error);
       this.queryService.getItemSub('tv',this.tvId,"videos").subscribe(data=>{this.videos=data.results;
         this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
@@ -50,7 +51,7 @@ export class TvDetailComponent implements OnInit {
         error=>this.errorMsg=error);
       this.queryService.getItemSub('tv',this.tvId,"recommendations").subscribe(data=>{this.recommend=data.results;},
         error=>this.errorMsg=error);
-        this.queryService.getItemSub('tv',this.tvId,"keywords").subscribe(data=>this.keywords=data.keywords,
+        this.queryService.getItemSub('tv',this.tvId,"keywords").subscribe(data=>this.keywords=data.results,
           error=>this.errorMsg=error);
     });
 

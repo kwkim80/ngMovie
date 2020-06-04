@@ -1,10 +1,8 @@
-<p>movie-recommend works!</p>
-<div class="row">
-    <div class="col-6 col-lg-4" *ngFor="let recom of recommend2.slice(3,6)">
-        <div class="card " >
-           
+<div  class="h-scrolling">
+    <div class="col-6 col-lg-4 d-inline-block mx-1" *ngFor="let recom of recommend.slice(0,10)">
+        <div [style.width]="recom.backdrop_path?'100%':'60%'" >             
             <a routerLink="/movies/{{recom.id}}">
-                <img class="img-thumbnail rounded" src="https://image.tmdb.org/t/p/w250_and_h141_face/{{recom.backdrop_path}}" alt="{{recom.title}}" >
+                <img class="img-thumbnail rounded"    src="{{recom.backdrop_path?'https://image.tmdb.org/t/p/w250_and_h141_face/'+recom.backdrop_path:'https://drive.google.com/uc?id=1e6FRD5GlhiqOmaJpnahyfsTZLe88pSXm'}}" alt="{{recom.title}}" >
             </a>
             <div class="px-1 text-center ">
                 <h6 class="font-smaller"><small>{{recom.title}}</small></h6>

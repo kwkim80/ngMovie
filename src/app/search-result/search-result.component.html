@@ -1,8 +1,8 @@
 <div class="container pt-md-5 pb-md-5 no-gutter pt-4">
     <h3>Movie List <span class="text-secondary">({{movieResultCnt}})</span></h3>
     <div class=" pb-md-3 text-right">
-        <button  class="btn btn-success  btn-sm" [class.d-none]="movieTotalPage==1" [class.disabled]="pageM==1"  type="btn" (click)="onPageM(pageM-1)">&lt;</button>
-        <button  class="btn btn-success  ml-3 btn-sm" [class.d-none]="movieTotalPage==1" [class.disabled]="pageM==movieTotalPage" type="btn" (click)="onPageM(pageM+1)">&gt;</button>
+        <button  class="btn btn-success  btn-sm" [class.d-none]="movieTotalPage<=1" [class.disabled]="pageM==1"  type="btn" (click)="onPageM(pageM-1)">&lt;</button>
+        <button  class="btn btn-success  ml-3 btn-sm" [class.d-none]="movieTotalPage<=1" [class.disabled]="pageM==movieTotalPage" type="btn" (click)="onPageM(pageM+1)">&gt;</button>
     </div>
     <div class="row" id="tvItemList">
         <div class="col-4 col-md-2 p-3" *ngFor="let item of movies">
@@ -25,8 +25,8 @@
       <hr>
       <h3>TV List <span class="text-secondary">({{tvResultCnt}})</span></h3>
       <div class=" pb-md-3 text-right">
-        <button  class="btn btn-success  btn-sm" type="btn" [class.d-none]="tvTotalPage==1" [class.disabled]="pageT==1" (click)="onPageT(pageT-1)">&lt;</button>
-        <button  class="btn btn-success ml-3 btn-sm" type="btn" [class.d-none]="tvTotalPage==1" [class.disabled]="pageT==tvTotalPage"  (click)="onPageT(pageT+1)">&gt;</button>
+        <button  class="btn btn-success  btn-sm" type="btn" [class.d-none]="tvTotalPage<=1" [class.disabled]="pageT==1" (click)="onPageT(pageT-1)">&lt;</button>
+        <button  class="btn btn-success ml-3 btn-sm" type="btn" [class.d-none]="tvTotalPage<=1" [class.disabled]="pageT==tvTotalPage"  (click)="onPageT(pageT+1)">&gt;</button>
       </div>
       <div class="row" id="tvItemList">
           <div class="col-4 col-md-2 p-3" *ngFor="let item of tvs">
@@ -49,8 +49,8 @@
       <hr>
       <h3>People <span class="text-secondary">({{peopleResultCnt}})</span></h3>
       <div class=" pb-md-3 text-right">
-        <button  class="btn btn-success  btn-sm" type="btn"  [class.d-none]="peopleTotalPage==1" [class.disabled]="pageP==1" (click)="onPageP(pageP-1)">&lt;</button>
-        <button  class="btn btn-success  ml-3  btn-sm" type="btn"  [class.d-none]="peopleTotalPage==1" [class.disabled]="pageP==peopleTotalPage" (click)="onPageP(pageP+1)">&gt;</button>
+        <button  class="btn btn-success  btn-sm" type="btn"  [class.d-none]="peopleTotalPage<=1" [class.disabled]="pageP==1" (click)="onPageP(pageP-1)">&lt;</button>
+        <button  class="btn btn-success  ml-3  btn-sm" type="btn"  [class.d-none]="peopleTotalPage<=1" [class.disabled]="pageP==peopleTotalPage" (click)="onPageP(pageP+1)">&gt;</button>
       </div>
       <div class="row" id="tvItemList">
           <div class="col-4 col-md-2 p-3" *ngFor="let item of people">
