@@ -44,7 +44,7 @@
           <div class="col-9 row">
             <div class="col-12 mt-sm-3 my-md-0 ">{{movie.title}}</div>
             <div class="col-sm-6 col-md-12"><i class="fa fa-share-square-o pr-0 pr-2 "></i>{{movie.release_date | date}}</div>
-            <div class="col-4 col-sm-3  col-md-5  "><i class="fa fa-star-o pr-0 pr-2"></i>{{movie.vote_average*10}}%</div>
+            <div class="col-5 col-sm-3  col-md-5  "><i class="fa fa-star-o pr-0 pr-2"></i>{{movie.vote_average*10}}%</div>
             <div class="col-4 col-sm-3  col-md-5 m"><i class="fa fa-globe pr-0 pr-2"></i>{{movie.original_language}} </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
           <div class="col-9 row">
             <div class="col-12 mt-sm-3 my-md-0 ">{{tv.name}}</div>
             <div class="col-sm-6 col-md-12"><i class="fa fa-share-square-o pr-0 pr-2 "></i>{{tv.first_air_date | date}}</div>
-            <div class="col-4 col-sm-3  col-md-5  "><i class="fa fa-star-o pr-0 pr-2"></i>{{tv.vote_average*10}}%</div>
+            <div class="col-5 col-sm-3  col-md-5  "><i class="fa fa-star-o pr-0 pr-2"></i>{{tv.vote_average*10}}%</div>
             <div class="col-4 col-sm-3  col-md-5 m"><i class="fa fa-globe pr-0 pr-2"></i>{{tv.original_language}} </div>
 
           </div>
@@ -80,7 +80,7 @@
         <div id="actorMovieList" class="h-scrolling">
          
                 
-                    <div class="col-3 col-lg-2 d-inline-block px-3"  *ngFor="let item of trends">
+                    <div class="col-3 col-lg-2 d-inline-block px-1 px-md-2"  *ngFor="let item of trends">
                       <div class="h-scrolling " *ngIf="item.media_type=='movie'; then thenBlock; else elseBlock;"></div> 
                        <ng-template #thenBlock>
                         <div class="card border-light border-bottom-0" >
@@ -92,10 +92,10 @@
                                       <span class="btn btn-success btn-sm rounded-circle p-1 border">{{item.vote_average*10}}%</span>
                                       
                                   </div>
-                                  <h6 class="font-smaller pt-2 breakDiv">
-                                    {{item.title.split(" ").length>5?item.title.split(" ").slice(0,5).join(" ")+"...":item.title}}
+                                  <h6 class="  pt-2 breakDiv">
+                                    <small>{{item.title.split(" ").length>5?item.title.split(" ").slice(0,5).join(" ")+"...":item.title}}</small>
                                   </h6>
-                                  <p class="text-right px-2 text-secondary"><small>{{item.release_date|date }}</small></p>
+                                  <p class=" d-none d-sm-block text-right px-2  font-smaller  text-secondary breakDiv"><small>{{item.release_date|date }}</small></p>
                                   <!-- <h6 class="font-smaller pt-2 ">{{item.title.split(" ").length>4?item.title.split(" ").slice(0,4).join(" ")+"...":item.title}}</h6> -->
                               </div>
                           </div>
@@ -110,10 +110,10 @@
                                       <span class="btn btn-success btn-sm rounded-circle p-1 border">{{item.vote_average*10}}%</span>
                                       
                                   </div>
-                                  <h6 class="font-smaller pt-2 breakDiv ">
-                                    {{item.name.split(" ").length>5?item.name.split(" ").slice(0,5).join(" ")+"...":item.name}}
+                                  <h6 class=" pt-2 breakDiv" >
+                                    <small>{{item.name.split(" ").length>5?item.name.split(" ").slice(0,5).join(" ")+"...":item.name}}</small>
                                   </h6>
-                                  <p class="text-right px-2 text-secondary"><small>{{item.first_air_date |date }}</small></p>
+                                  <p class="d-none d-sm-block text-right px-2  font-smaller  text-secondary breakDiv "><small>{{item.first_air_date|date }}</small></p>
                                   <!-- <h6 class="font-smaller pt-2 ">{{item.name.split(" ").length>4?item.name.split(" ").slice(0,4).join(" ")+"...":item.name}}</h6> -->
                               </div>
                           </div>
