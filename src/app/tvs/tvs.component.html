@@ -16,7 +16,7 @@
             </a> 
             <div class=" content text-center px-1 py-2 cursor-pointer" routerLink="/tv/{{item.id}}">
                 <div class="consensus  ">
-                    <span class="btn btn-dark btn-sm rounded-circle p-1 border">73%</span>
+                    <span class="btn btn-dark btn-sm rounded-circle p-1 border">{{item.vote_average*10}}%</span>
                       
                 </div>
                 <h6 class="font-smaller pt-2 ">{{item.name.split(" ").length>4?item.name.split(" ").slice(0,4).join(" ")+"...":item.name}}</h6>

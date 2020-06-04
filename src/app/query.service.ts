@@ -45,20 +45,13 @@ export class QueryService {
       }));
   }
 
-  getMovies(keyword, pageNum):Observable<IWrapper>{
-    return this.getSearch('movie', keyword, pageNum);
-}
+
   getItem(subUrl,idx):Observable<Iitem>{
     this.url="".concat(this.baseURL, subUrl,"/",idx,'?api_key=',this.APIKEY,'&language=en-US'); 
     return this.http.get<Iitem>(this.url).pipe(
      retry(1), catchError(error=>{
        return throwError(error.message||"Server Error");
      }));
-  }
-
-  getMovie(idx):Observable<Iitem>{
-    return this.getItem('movie',idx);
-    
   }
 
   getItemSub(subUrl,idx,subCate):Observable<IWrapper>{
@@ -81,52 +74,25 @@ export class QueryService {
     return this.data;
   }
 
-  getCast(idx):Observable<IWrapper>{
-    return this.getItemSub("movie",idx,"credits");
-    
-  }
+  //getMovies(keyword, pageNum):Observable<IWrapper>{ return this.getSearch('movie', keyword, pageNum);}
+  //getMovie(idx):Observable<Iitem>{return this.getItem('movie',idx);}
+  //getCast(idx):Observable<IWrapper>{ return this.getItemSub("movie",idx,"credits");}
+  //getMedia(idx):Observable<IWrapper>{return this.getItemSub("movie",idx,"images");}
+  //getRecommend(idx):Observable<IWrapper>{return this.getItemSub("movie",idx,"recommendations");}
+  //getMovieSub(idx, sub):Observable<IWrapper>{return this.getItemSub("movie",idx,sub)}
+  //getActors(keyword, pageNum):Observable<IWrapper>{return this.getSearch('person',keyword,pageNum);}
+  //getActor(idx):Observable<Iitem>{return this.getItem('peroson',idx);}
+  //getActorSub(idx, sub):Observable<IWrapper>{return this.getItemSub('person',idx,sub);}
+  //getActorbyName(name):Observable<IWrapper>{ return this.getSearch('person',name,"1");}
 
-  getMedia(idx):Observable<IWrapper>{
-
-    return this.getItemSub("movie",idx,"images");
-    
-  }
-
-  getRecommend(idx):Observable<IWrapper>{
-    return this.getItemSub("movie",idx,"recommendations");
-  }
-
-  getMovieSub(idx, sub):Observable<IWrapper>{
-    return this.getItemSub("movie",idx,sub);
-
-  }
-
-
-  getActors(keyword, pageNum):Observable<IWrapper>{
-     return this.getSearch('person',keyword,pageNum);
-  }
-
-
-  
-  getActor(idx):Observable<Iitem>{
-    return this.getItem('peroson',idx);
-   
-  }
-
-  getActorSub(idx, sub):Observable<IWrapper>{
-    return this.getItemSub('person',idx,sub);
-   
-  }
-
-  getActorCredit(idx, sub):Observable<IMovieSub>{
-    this.url="".concat(this.baseURL, 'person/',idx,'/',sub,'?api_key=',this.APIKEY,'&language=en-US'); 
-
-    this.data= this.http.get<IWrapper>(this.url).pipe(
-      map(events => events.cast.sort((a:Iitem, b:Iitem) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()))
-      , catchError(error=>{
-        return throwError(error.message||"Server Error") })
-    );
-    return this.data;
+  // getActorCredit(idx, sub):Observable<IMovieSub>{
+  //   this.url="".concat(this.baseURL, 'person/',idx,'/',sub,'?api_key=',this.APIKEY,'&language=en-US'); 
+  //   this.data= this.http.get<IWrapper>(this.url).pipe(
+  //     map(events => events.cast.sort((a:Iitem, b:Iitem) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()))
+  //     , catchError(error=>{
+  //       return throwError(error.message||"Server Error") })
+  //   );
+  //   return this.data;
     
     // let  sortById = function(data) {
     //   data.sort((a,b) => data.id - data.id);
@@ -139,9 +105,6 @@ export class QueryService {
     // );
    
    
-  }
+  // }
 
-  getActorbyName(name):Observable<IWrapper>{
-    return this.getSearch('person',name,"1");
-   }
 }
