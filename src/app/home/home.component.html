@@ -42,9 +42,9 @@
             <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie.poster_path}}" class=" py-1 w-70-100-50" alt="{{movie.title}}">
           </div>
           <div class="col-9 row">
-            <div class="col-8">{{movie.title}}</div>
-            <div class="col-4 text-right"><i class="fa fa-star-o pr-2"></i>{{movie.popularity}}</div>
-            <div class="col-12"><i class="fa fa-share-square-o px-2 pr-2"></i>{{movie.release_date}}</div>
+            <div class="col-12 mt-2">{{movie.title}}</div>
+            <div  class="col-6 mb-2"><i class="fa fa-star-o pr-2"></i>{{movie.vote_average*10}}%</div>
+            <div  class="col-6 mb-2"><i class="fa fa-share-square-o  pr-2"></i>{{movie.release_date}}</div>
 
           </div>
         </div>
@@ -58,9 +58,9 @@
             <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{tv.poster_path}}" class="w-70-100-50 py-1" alt="{{tv.name}}">
           </div>
           <div class="col-9 row">
-            <div class="col-8">{{tv.name}}</div>
-            <div class="col-4 text-right"><i class="fa fa-star-o pr-2"></i>{{tv.popularity}}</div>
-            <div class="col-12"><i class="fa fa-share-square-o px-2 pr-2"></i>{{tv.first_air_date}}</div>
+            <div class="col-12 mt-2">{{tv.name}}</div>
+            <div class="col-6 mb-2"><i class="fa fa-star-o pr-2 "></i>{{tv.vote_average*10}}%</div>
+            <div class="col-6 mb-2"><i class="fa fa-share-square-o pr-2 "></i>{{tv.first_air_date}}</div>
 
           </div>
           
