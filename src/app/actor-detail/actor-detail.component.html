@@ -17,13 +17,13 @@
                  
                         <div class="h-scrolling " *ngIf="castes!=null; then thenBlock; else elseBlock;"></div> 
                         <ng-template #thenBlock>
-                            <div class="col-3 col-lg-2 d-inline-block px-1" *ngFor="let movie of castes.slice(0,10)">
+                            <div class="col-3 col-lg-2 d-inline-block px-1"  *ngFor="let movie of castes.slice(0,10)">
                                 <div class="card " >
                                     <a routerLink="/movies/{{movie.id}}">
                                         <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{movie.poster_path}}" class="card-img-top" alt="{{movie.title}}">
                                     </a> 
                                     <div class="px-1 text-center ">
-                                        <h6 class="font-smaller "><small class="breakDiv">{{movie.title.split(" ").slice(0,4).join(" ")}}</small></h6>
+                                        <h6 class="font-smaller "><small class="breakDiv"> {{movie.title.split(" ").slice(0,4).join(" ")}}</small></h6>
                                     </div>
                                 </div>
                             </div>
