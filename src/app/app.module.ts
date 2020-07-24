@@ -12,6 +12,7 @@ import {ActorsService} from './actors.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CastComponent } from './cast/cast.component';
+import { TvCastComponent } from './tv-cast/tv-cast.component';
 
 
 
@@ -20,7 +21,8 @@ import { CastComponent } from './cast/cast.component';
   declarations: [
     AppComponent,
     routingComponents,
-    CastComponent
+    CastComponent,
+    TvCastComponent
   ],
   imports: [
     BrowserModule,

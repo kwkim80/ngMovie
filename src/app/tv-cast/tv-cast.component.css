@@ -1,0 +1,17 @@
+.headerBg{
+    background:url('../../assets/img/stars.jpg') center center no-repeat rgba(0,0,0,0.7);
+    background-size: cover;
+    background-blend-mode: multiply;
+    color: whitesmoke;
+}
+
+.no-img{
+    background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg');
+}
+.line-height-narrow{
+    line-height:0.7rem;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
