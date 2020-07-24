@@ -38,21 +38,33 @@ export class TvDetailComponent implements OnInit {
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.tvId=parseInt(param.get('id'));
    // console.log(this.tvId);
-      this.queryService.getItem('tv',this.tvId).subscribe(data=>{this.tv=data;this.network=this.tv.networks.pop()},
-        error=>this.errorMsg=error);
+   this.queryService.getItemWithSub('tv',this.tvId,['credits','videos','images','recommendations','keywords']).subscribe(data=>{
+    this.tv=data;  
+    this.network=this.tv.networks.pop();
+    this.videos=this.tv.videos.results;
+    this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
+    this.trailer=this.videos.find(r=>r.type=="Trailer");
+    this.castes=this.tv.credits.cast; 
+    this.backdrops=this.tv.images.backdrops; 
+    this.posters=this.tv.images.posters;
+    this.recommend=this.tv.recommendations.results;
+    this.keywords=this.tv.keywords.results;
+   },
+    error=>this.errorMsg=error);
 
-        //casting people
-      this.queryService.getItemSub('tv',this.tvId,'credits').subscribe(data=>{this.castes=data.cast; console.log(this.castes);},
-        error=>this.errorMsg=error);
-      this.queryService.getItemSub('tv',this.tvId,"videos").subscribe(data=>{this.videos=data.results;
-        this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
-        this.trailer=this.videos.find(r=>r.type=="Trailer");});
-      this.queryService.getItemSub('tv',this.tvId,'images').subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
-        error=>this.errorMsg=error);
-      this.queryService.getItemSub('tv',this.tvId,"recommendations").subscribe(data=>{this.recommend=data.results;},
-        error=>this.errorMsg=error);
-        this.queryService.getItemSub('tv',this.tvId,"keywords").subscribe(data=>this.keywords=data.results,
-          error=>this.errorMsg=error);
+      // this.queryService.getItem('tv',this.tvId).subscribe(data=>{this.tv=data;this.network=this.tv.networks.pop()},
+      //   error=>this.errorMsg=error);
+      // this.queryService.getItemSub('tv',this.tvId,'credits').subscribe(data=>{this.castes=data.cast; console.log(this.castes);},
+      //   error=>this.errorMsg=error);
+      // this.queryService.getItemSub('tv',this.tvId,"videos").subscribe(data=>{this.videos=data.results;
+      //   this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");
+      //   this.trailer=this.videos.find(r=>r.type=="Trailer");});
+      // this.queryService.getItemSub('tv',this.tvId,'images').subscribe(data=>{this.backdrops=data.backdrops,this.posters=data.posters},
+      //   error=>this.errorMsg=error);
+      // this.queryService.getItemSub('tv',this.tvId,"recommendations").subscribe(data=>{this.recommend=data.results;},
+      //   error=>this.errorMsg=error);
+      //   this.queryService.getItemSub('tv',this.tvId,"keywords").subscribe(data=>this.keywords=data.results,
+      //     error=>this.errorMsg=error);
     });
 
     

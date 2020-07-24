@@ -50,7 +50,7 @@ export class MovieDetailComponent implements OnInit {
           this.keywords=this.movie.keywords.keywords;
          },
           error=>this.errorMsg=error);
-        //casting people
+          
       //   this.queryService.getItem('movie',this.movieId).subscribe(data=>this.movie=data,
       //     error=>this.errorMsg=error);
       // this.queryService.getItemSub('movie',this.movieId,'credits').subscribe(data=>{this.castes=data.cast; console.log(this.castes)},

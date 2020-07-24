@@ -68,6 +68,7 @@ export class HomeComponent implements OnInit {
       
     }
 
+      //sample data
         onPage(pageNum){
           this.pageNum=pageNum;
         this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts=>{

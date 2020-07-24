@@ -28,15 +28,17 @@ export class QueryService {
 
   constructor(private http:HttpClient) { }
 
-  getInfo(itemName){
+
+   //1 getTreding
+  getInfo(itemName):Observable<IWrapper>{
     this.url = "".concat(this.baseURL, itemName,'?api_key=',this.APIKEY,'&language=en-US'); 
     return this.http.get<IWrapper>(this.url).pipe(
       retry(1), catchError(error=>{
         return throwError(error.message||"Server Error");
       }));
   }
-
-  getData(itemName,pageNum){
+// 3(tv/popular, movie/popular, movie/top_rated) +page
+  getData(itemName,pageNum):Observable<IWrapper>{
     this.url = "".concat(this.baseURL, itemName,'?api_key=',this.APIKEY,'&language=en-US&page=',pageNum); 
     return this.http.get<IWrapper>(this.url).pipe(
       retry(1), catchError(error=>{
@@ -44,7 +46,7 @@ export class QueryService {
       }));
   }
 
-  
+  // 3(tv,movie,person)+page
   getSearch(itemName, keyword, pageNum):Observable<IWrapper>{
     this.url = "".concat(this.baseURL, 'search/', itemName ,'?api_key=',this.APIKEY,'&language=en-US&query=',keyword,'&page=',pageNum); 
     return this.http.get<IWrapper>(this.url).pipe(
@@ -53,7 +55,7 @@ export class QueryService {
       }));
   }
 
-
+  // 3(tv,movie,person)+id
   getItem(itemName,idx):Observable<Iitem>{
     this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&language=en-US'); 
     return this.http.get<Iitem>(this.url).pipe(
@@ -62,6 +64,7 @@ export class QueryService {
      }));
   }
 
+  //2(movie(id)+sub[credits,videos,images,recommendataions,keyword],tv(id)+sub[credits,videos,images,recommendataions,keyword])
   getItemWithSub(itemName,idx,subItem:string[]):Observable<Iitem>{
     this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&append_to_response=',subItem.join(',')); 
     console.log(this.url);
@@ -71,7 +74,7 @@ export class QueryService {
      }));
   }
 
-
+//5(person(id)+combined_credit,movie(id)+credits,tv(id)+credits,videos,images,recommendataions,keyword)
   getItemSub(itemName,idx,subCate):Observable<IWrapper>{
     this.url="".concat(this.baseURL, itemName,'/',idx,'/',subCate,'?api_key=',this.APIKEY,'&language=en-US'); 
 
