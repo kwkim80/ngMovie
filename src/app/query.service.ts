@@ -30,14 +30,14 @@ export class QueryService {
 
 
    //1 getTreding
-  getInfo(itemName):Observable<IWrapper>{
-    this.url = "".concat(this.baseURL, itemName,'?api_key=',this.APIKEY,'&language=en-US'); 
-    return this.http.get<IWrapper>(this.url).pipe(
-      retry(1), catchError(error=>{
-        return throwError(error.message||"Server Error");
-      }));
-  }
-// 3(tv/popular, movie/popular, movie/top_rated) +page
+  // getInfo(itemName):Observable<IWrapper>{
+  //   this.url = "".concat(this.baseURL, itemName,'?api_key=',this.APIKEY,'&language=en-US'); 
+  //   return this.http.get<IWrapper>(this.url).pipe(
+  //     retry(1), catchError(error=>{
+  //       return throwError(error.message||"Server Error");
+  //     }));
+  // }
+// 3(tv/popular, movie/popular, movie/top_rated, trending/all/day) +page
   getData(itemName,pageNum):Observable<IWrapper>{
     this.url = "".concat(this.baseURL, itemName,'?api_key=',this.APIKEY,'&language=en-US&page=',pageNum); 
     return this.http.get<IWrapper>(this.url).pipe(

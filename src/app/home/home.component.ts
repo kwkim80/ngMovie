@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
         error=>this.errorMsg=error);
       this.queyService.getData('tv/popular',this.pageNum).subscribe(data=>{this.tvs=data.results},
         error=>this.errorMsg=error);
-        this.queyService.getInfo('trending/all/day').subscribe(data=>{this.trends=data.results, console.log(this.trends)},
+        this.queyService.getData('trending/all/day',this.pageNum).subscribe(data=>{this.trends=data.results, console.log(this.trends)},
           error=>this.errorMsg=error);
       this.queyService.getData('movie/top_rated',this.pageNum).subscribe(data=>{this.tops=data.results},
             error=>this.errorMsg=error);
