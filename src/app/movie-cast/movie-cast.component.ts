@@ -24,12 +24,12 @@ export class MovieCastComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.movieId=parseInt(param.get('id'));
-      this.queryService.getItemSub("movie",this.movieId,"credits").subscribe(data=>{this.castes=data.cast, this.crews=data.crew},
+      this.queryService.getItemWithSub({ itemName: "movie", idx: this.movieId, subItem: ["credits"] }).subscribe(data=>{
+          this.movie=data,
+          this.castes=data.credits.cast, 
+          this.crews=data.credits.crew},
         error=>this.errorMsg=error);
-      // this.movieService.getCast(this.movieId).subscribe(data=>{this.castes=data.cast, this.crews=data.crew},
-      //   error=>this.errorMsg=error);
-      this.queryService.getItem('movie',this.movieId).subscribe(data=>this.movie=data,
-          error=>this.errorMsg=error);
+    
   })}
 
   onSelectByActor(person){

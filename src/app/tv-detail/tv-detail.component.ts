@@ -3,6 +3,8 @@ import {Router, ParamMap, ActivatedRoute} from '@angular/router';
 import * as $ from 'jquery' 
 import { QueryService } from '../query.service';
 import { Iitem } from '../item';
+import { ICast } from '../cast';
+import { IRecommend } from '../recommend';
 
 @Component({
   selector: 'app-tv-detail',
@@ -14,11 +16,11 @@ export class TvDetailComponent implements OnInit {
   public tvId;
   public tv:Iitem;
   public errorMsg;
-  public castes:Iitem[];
+  public castes:ICast[];
   public data;
   public backdrops:Iitem[];
   public posters:Iitem[];
-  public recommend:Iitem[];
+  public recommend:IRecommend[];
   public keywords:Iitem[];
   public videos:Iitem[];
   public trailer:Iitem;
@@ -38,7 +40,7 @@ export class TvDetailComponent implements OnInit {
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.tvId=parseInt(param.get('id'));
    // console.log(this.tvId);
-   this.queryService.getItemWithSub('tv',this.tvId,['credits','videos','images','recommendations','keywords']).subscribe(data=>{
+   this.queryService.getItemWithSub({ itemName: 'tv', idx: this.tvId, subItem: ['credits', 'videos', 'images', 'recommendations', 'keywords'] }).subscribe(data=>{
     this.tv=data;  
     this.network=this.tv.networks.pop();
     this.videos=this.tv.videos.results;

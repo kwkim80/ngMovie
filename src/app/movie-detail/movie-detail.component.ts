@@ -3,6 +3,9 @@ import {Router, ParamMap, ActivatedRoute} from '@angular/router';
 import * as $ from 'jquery' 
 import { QueryService } from '../query.service';
 import { Iitem } from '../item';
+import { IMovie } from '../movie';
+import { ICast } from '../cast';
+import { IRecommend } from '../recommend';
 
 @Component({
   selector: 'app-movie-detail',
@@ -14,11 +17,11 @@ export class MovieDetailComponent implements OnInit {
   public movieId;
   public movie:Iitem;
   public errorMsg;
-  public castes:Iitem[]=null;
+  public castes:ICast[]=null;
   public data;
   public backdrops:Iitem[]=null;
   public posters:Iitem[]=null;
-  public recommend:Iitem[]=null;
+  public recommend:IRecommend[]=null;
   public keywords:Iitem[]=null;
   public videos:Iitem[]=null;
   public trailer:Iitem;
@@ -38,7 +41,7 @@ export class MovieDetailComponent implements OnInit {
       this.movieId=parseInt(param.get('id'));
    // console.log(this.movieId);
     
-        this.queryService.getItemWithSub('movie',this.movieId,['credits','videos','images','recommendations','keywords']).subscribe(data=>{
+        this.queryService.getItemWithSub({ itemName: 'movie', idx: this.movieId, subItem: ['credits', 'videos', 'images', 'recommendations', 'keywords'] }).subscribe(data=>{
           this.movie=data;  
           this.videos=this.movie.videos.results;
           this.videos.map(r=>r.poster_path="https://i.ytimg.com/vi/"+r.key+"/hqdefault.jpg");

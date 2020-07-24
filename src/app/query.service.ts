@@ -56,17 +56,17 @@ export class QueryService {
   }
 
   // 3(tv,movie,person)+id
-  getItem(itemName,idx):Observable<Iitem>{
-    this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&language=en-US'); 
-    return this.http.get<Iitem>(this.url).pipe(
-     retry(1), catchError(error=>{
-       return throwError(error.message||"Server Error");
-     }));
-  }
+  // getItem(itemName,idx):Observable<Iitem>{
+  //   this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&language=en-US'); 
+  //   return this.http.get<Iitem>(this.url).pipe(
+  //    retry(1), catchError(error=>{
+  //      return throwError(error.message||"Server Error");
+  //    }));
+  // }
 
   //2(movie(id)+sub[credits,videos,images,recommendataions,keyword],tv(id)+sub[credits,videos,images,recommendataions,keyword])
-  getItemWithSub(itemName,idx,subItem:string[]):Observable<Iitem>{
-    this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&append_to_response=',subItem.join(',')); 
+  getItemWithSub({ itemName, idx, subItem }: { itemName; idx; subItem: string[]; }):Observable<Iitem>{
+    this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&language=en-US','&append_to_response=',subItem.join(',')); 
     console.log(this.url);
     return this.http.get<Iitem>(this.url).pipe(
      retry(1), catchError(error=>{
@@ -74,16 +74,18 @@ export class QueryService {
      }));
   }
 
-//5(person(id)+combined_credit,movie(id)+credits,tv(id)+credits,videos,images,recommendataions,keyword)
+//0
   getItemSub(itemName,idx,subCate):Observable<IWrapper>{
     this.url="".concat(this.baseURL, itemName,'/',idx,'/',subCate,'?api_key=',this.APIKEY,'&language=en-US'); 
-
+    console.log(this.url);
     return this.http.get<IWrapper>(this.url).pipe(
       retry(1), catchError(error=>{
           return throwError(error.message||"Server Error")
       }));
   }
 
+  // this.castes=this.data.cast.sort((a:Iitem, b:Iitem) =>
+  //       new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
   getItemSubSort(subUrl,idx,subCate,sortFunc):Observable<IWrapper>{
     this.url="".concat(this.baseURL, subUrl,'/',idx,'/',subCate,'?api_key=',this.APIKEY,'&language=en-US'); 
     this.data= this.http.get<IWrapper>(this.url).pipe(
