@@ -31,12 +31,18 @@ export class MoviesComponent implements OnInit {
     //  this.movies=this.data.results;
     // this.totalPage=this.data.total_pages},
     //  error=>this.errorMsg=error);
-      this.queryService.getSearch('movie',this.keyword?this.keyword:"Avengers", this.pageNum).subscribe(data=>{this.data=data;
-         this.movies=this.data.results;
-         this.totalPage=this.data.total_pages;
-         console.log(this.totalPage);
-         this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
-         error=>this.errorMsg=error);
+ 
+      // this.queryService.getSearch('movie',this.keyword?this.keyword:"Avengers", this.pageNum).subscribe(data=>{this.data=data;
+      //    this.movies=this.data.results;
+      //    this.totalPage=this.data.total_pages;
+      //    console.log(this.totalPage);
+      //    this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
+      //    error=>this.errorMsg=error);
+      this.queryService.getData('movie/popular', this.pageNum).subscribe(data=>{this.data=data;
+        this.movies=this.data.results;
+        this.totalPage=this.data.total_pages;
+        this.numbers = Array((this.totalPage-(this.pageSet*10)>=10)?10:this.totalPage-(this.pageSet*10)).fill(0).map((x,i)=>(this.pageSet*10)+i);},
+        error=>this.errorMsg=error);
     
   }
 
@@ -55,7 +61,7 @@ export class MoviesComponent implements OnInit {
 
   onPage(page){
     console.log(this.keyword+":"+page);
-    this.queryService.getSearch('movie',this.keyword?this.keyword:"Avengers",page).subscribe(data=>{this.data=data;
+    this.queryService.getData('movie/popular',page).subscribe(data=>{this.data=data;
       this.movies=this.data.results;
       this.totalPage=this.data.total_pages;
       this.pageSet=Math.floor((page-1)/10);
