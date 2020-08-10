@@ -51,7 +51,9 @@ export class QueryService {
         return throwError(error.message||"Server Error");
       }));
   }
-
+  //https://api.themoviedb.org/3/movie/68126?language=en-US&api_key=381e09ba86a78d210720788b471eeb8e&page=1&append_to_response=credits,videos,images,recommendations,keywords
+  //https://api.themoviedb.org/3/tv/60735?api_key=381e09ba86a78d210720788b471eeb8e&language=en-US&page=1&append_to_response=credits,videos,images,recommendations,keywords
+  //https://api.themoviedb.org/3/movie/516486?api_key=381e09ba86a78d210720788b471eeb8e&language=en-US&append_to_response=credits,videos,images,recommendations,keywords
   getItemWithSub({ itemName, idx, subItem}):Observable<Iitem>{
     this.url="".concat(this.baseURL, itemName,"/",idx,'?api_key=',this.APIKEY,'&language=en-US','&append_to_response=',subItem.join(',')); 
     console.log(this.url);

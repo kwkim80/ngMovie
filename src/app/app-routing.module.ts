@@ -12,6 +12,7 @@ import { TvsComponent } from './tvs/tvs.component';
 import { TvDetailComponent } from './tv-detail/tv-detail.component';
 import { TvCastComponent } from './tv-cast/tv-cast.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { PolicyComponent } from './policy/policy.component';
 
 const routes: Routes = [
   {path:"", redirectTo:'/home', pathMatch:'full'},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:"tv/:id", component:TvDetailComponent},
   {path:"tv/:id/cast", component:TvCastComponent},
   {path:"search/:id", component:SearchResultComponent},
+  {path:"policy", component:PolicyComponent},
   {path:"**", component:PageNotComponent }
 
 ];
@@ -50,5 +52,6 @@ export const routingComponents=[
   TvDetailComponent,
   TvCastComponent,
   SearchResultComponent,
+  PolicyComponent,
   PageNotComponent
 ]
